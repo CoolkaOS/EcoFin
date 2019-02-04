@@ -40,6 +40,7 @@ def pidr_cd(bot, updater, *args):
     return contest, today
 
 
+@run_async
 def confirmation(bot, updater):
     players = wr.read_results()
     if str(updater.message.chat.id) in players:
@@ -59,6 +60,7 @@ def confirmation(bot, updater):
                          reply_markup=markup)
 
 
+@run_async
 def query_h(bot, updater):
     call = updater.callback_query
     if call.message:
@@ -143,6 +145,7 @@ def send_welcome(bot, updater):
         bot.send_message(chat_id=updater.callback_query.message.chat.id, text="Привет. Ты попал на Карусель! Но она не сегодня(\nЧто хочешь выбрать?", reply_markup=markup)
 
 
+@run_async
 def compete_conf(bot, updater):
     btnlist = [
         telegram.InlineKeyboardButton('Желаю.', callback_data='want'),
@@ -444,12 +447,15 @@ def answer_problem(bot, updater):
     except KeyError:
         bot.send_message(chat_id=message.chat.id, text='Ты ещё не начал.')
 
-@run_async
+
 def clear(bot, updater):
-    wr.clear(str(updater.message.chat.id))
+    try:
+        wr.clear(str(updater.message.chat.id))
+    except KeyError:
+        pass
     bot.send_message(chat_id=updater.message.chat.id, text='Чисто.')
 
-@run_async
+
 def rest(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Auch!')
 
@@ -553,12 +559,12 @@ def show_time(bot, updater):
 
 def send_res(bot, updater):
     #GD.find_file('res.json').GetContentFile('res.json')
-    doc = open('res.json', 'r')
+    doc = open('results.json', 'rb')
     btnlist = [
         telegram.InlineKeyboardButton('Да.', callback_data='yes')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
-    bot.send_document(chat_id=updater.message.chat.id, data=doc)
+    bot.send_document(chat_id=updater.message.chat.id, document=doc)
     bot.send_message(
         chat_id=updater.message.chat.id,
         text='Отправить тебе xlxs?',
@@ -572,13 +578,13 @@ def send_xlxs(bot, updater):
         id = updater.message.chat.id
     totable.totable()
     doc1 = open('res.xlsx', 'rb')
-    bot.send_document(chat_id=id, data=doc1)
+    bot.send_document(chat_id=id, document=doc1)
 
 
 def send_fb(bot, updater):
     #GD.find_file('feedback.json').GetContentFile('feedback.json')
-    doc = open('feedback.json', 'r', encoding='utf-8')
-    bot.send_document(chat_id=updater.message.chat.id, data=doc)
+    doc = open('feedback.json', 'rb')
+    bot.send_document(chat_id=updater.message.chat.id, document=doc)
 
 
 def show_menu(bot, updater):
@@ -671,7 +677,8 @@ dispatcher.add_handler(CommandHandler('menu', show_menu))
 dispatcher.add_handler(CommandHandler('pidr_cheats', cheats))
 dispatcher.add_handler(CommandHandler('feedback', feedback))
 dispatcher.add_handler(CommandHandler('donate', donate))
+dispatcher.add_handler(CommandHandler('pidr_sf', send_fb))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
-updater.start_polling()
+updater.start_polling(read_latency=0.5)
