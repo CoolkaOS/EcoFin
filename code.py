@@ -27,7 +27,7 @@ TIME = 14400
 problems = wr.read_problems()
 
 
-def pidr_cd(bot, updater, *args):
+def pidr_cd(bot, updater, args=[]):
     try:
         DAY[0] = int(args[0])
         bot.send_message(chat_id=updater.message.chat.id, text='Успешно!' )
@@ -611,6 +611,7 @@ def cheats(bot, updater):
 /pidr_cl
 /pidr_sr
 /pidr_sf
+/pidr_sall
     ''')
 
 
@@ -660,7 +661,11 @@ def donate(bot, updater):
         text='Спасибо большое за желание поддержать наш проект, участвая в нём!')
 
 
-
+def sr(bot, updater):
+    while True:
+        send_res(bot, updater)
+        send_fb(bot, updater)
+        time.sleep(60*5)
 
 
 
@@ -675,10 +680,13 @@ dispatcher.add_handler(CommandHandler('time', show_time))
 dispatcher.add_handler(CommandHandler('pidr_sr', send_res))
 dispatcher.add_handler(CommandHandler('menu', show_menu))
 dispatcher.add_handler(CommandHandler('pidr_cheats', cheats))
+dispatcher.add_handler(CommandHandler('pidr_cheats', cheats))
 dispatcher.add_handler(CommandHandler('feedback', feedback))
 dispatcher.add_handler(CommandHandler('donate', donate))
 dispatcher.add_handler(CommandHandler('pidr_sf', send_fb))
+dispatcher.add_handler(CommandHandler('pidr_sall', sr))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
-updater.start_polling(read_latency=0.5)
+time.sleep(3)
+updater.start_polling(read_latency=3)
