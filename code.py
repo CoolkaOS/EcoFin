@@ -635,9 +635,10 @@ def show_menu(bot, updater):
         telegram.InlineKeyboardButton('Показать задачки.', callback_data='problems'),
         telegram.InlineKeyboardButton('Поддержать проект!', callback_data='donate'),
         telegram.InlineKeyboardButton('Отправить отзыв.', callback_data='feedback'),
-        telegram.InlineKeyboardButton('Начать Контест!', callback_data='contest')
+        telegram.InlineKeyboardButton('Правила.', callback_data='rules')
     ]
-    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2))
+    btn = telegram.InlineKeyboardButton('Начать Контест!', callback_data='contest')
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[btn]))
     bot.send_message(chat_id=id, text='Меню:', reply_markup=markup)
 
 
