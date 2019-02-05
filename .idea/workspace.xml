@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,28 +39,29 @@
         <counts>
           <entry key="Python Console" value="59" />
           <entry key="json" value="143" />
-          <entry key="py" value="3033" />
+          <entry key="py" value="3037" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="143" />
-          <entry key="Python" value="3092" />
+          <entry key="Python" value="3096" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="518" column="32" selection-start-line="518" selection-start-column="32" selection-end-line="518" selection-end-column="32" />
+            <state relative-caret-position="242">
+              <caret line="488" column="32" selection-start-line="488" selection-start-column="32" selection-end-line="488" selection-end-column="32" />
               <folding>
                 <element signature="e#15691#16946#0" />
                 <element signature="e#20778#20932#0" />
                 <element signature="e#20963#21026#0" />
+                <element signature="e#22662#24071#0" />
                 <element signature="e#24150#25424#0" />
                 <element signature="e#25049#25501#0" />
                 <element signature="e#25537#25777#0" />
@@ -71,6 +71,7 @@
                 <element signature="e#27568#27913#0" />
                 <element signature="e#27436#27646#0" />
                 <element signature="e#27704#28037#0" />
+                <element signature="e#28582#29075#0" />
                 <element signature="e#28560#28657#0" />
               </folding>
             </state>
@@ -91,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/results.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -163,8 +164,8 @@
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
         <option value="$PROJECT_DIR$/send_files.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/code.py" />
         <option value="$PROJECT_DIR$/results.json" />
+        <option value="$PROJECT_DIR$/code.py" />
       </list>
     </option>
   </component>
@@ -440,14 +441,22 @@
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/results.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="518" column="32" selection-start-line="518" selection-start-column="32" selection-end-line="518" selection-end-column="32" />
+        <state relative-caret-position="242">
+          <caret line="488" column="32" selection-start-line="488" selection-start-column="32" selection-end-line="488" selection-end-column="32" />
           <folding>
             <element signature="e#15691#16946#0" />
             <element signature="e#20778#20932#0" />
             <element signature="e#20963#21026#0" />
+            <element signature="e#22662#24071#0" />
             <element signature="e#24150#25424#0" />
             <element signature="e#25049#25501#0" />
             <element signature="e#25537#25777#0" />
@@ -457,15 +466,9 @@
             <element signature="e#27568#27913#0" />
             <element signature="e#27436#27646#0" />
             <element signature="e#27704#28037#0" />
+            <element signature="e#28582#29075#0" />
             <element signature="e#28560#28657#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
         </state>
       </provider>
     </entry>

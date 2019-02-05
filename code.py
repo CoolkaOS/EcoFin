@@ -486,7 +486,7 @@ def result(bot, updater):
         resu = players[str(id)][2][len(players[str(id)][2]) - 1]
         text = 'Ваше финальный результат '
         if resu[3] != 'not contest':
-            text += 'на Каруселе :\n'
+            text += 'на Карусели :\n'
         else:
             text += 'на Дорешке :\n'
         for res in list(str(i) for i in range(1, 7)):
@@ -523,7 +523,7 @@ def allresults(bot, updater):
                 text = 'Ваше финальный результат на {} '.format(
                     str(resu[0])[:-7])
                 if resu[3] != 'not contest':
-                    text += 'на Каруселе :\n'
+                    text += 'на Карусели :\n'
                 else:
                     text += 'на Дорешке :\n'
                 for res in list(str(i) for i in range(1, 7)):
