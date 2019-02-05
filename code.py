@@ -100,7 +100,8 @@ def query_h(bot, updater, job_queue):
         start_carousel(bot, updater, 0, job_queue)
 
     if call.data == 'rules':
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
+        if updater.callback_query.message.text != 'Меню:':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
         print_rules(bot, updater)
 
     if call.data == 'problems':
@@ -197,7 +198,8 @@ def print_rules(bot, updater):
 Если на задачу дан неверный ответ, то команда получает за решение 0 баллов, а следующая задача будет стоить на 3 балла меньше (но не менее 3 баллов она стоить не может).
 
 По всем техническим вопросам - vk.com/coolkaos, @CoolkaOS''')
-    send_welcome(bot, updater)
+    if updater.callback_query.message.text != 'Меню:':
+        send_welcome(bot, updater)
 
 
 @run_async
