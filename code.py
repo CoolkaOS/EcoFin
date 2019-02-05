@@ -247,7 +247,8 @@ def start_carousel(bot, updater, compete):
             players[str(updater.callback_query.message.chat.id)][2][len(
                 players[str(updater.callback_query.message.chat.id)][2]) - 1][3] = 'ended'
             wr.write_results(players)
-            #result(updater.callback_query.message.chat.id)
+            result(bot, updater)
+
 
 @run_async
 def select_problems(bot, updater):
@@ -668,7 +669,6 @@ def sr(bot, updater):
         time.sleep(60*5)
 
 
-
 dispatcher.add_handler(CallbackQueryHandler(query_h))
 dispatcher.add_handler(CommandHandler('pidr_cl', clear))
 dispatcher.add_handler(CommandHandler('pidr_cd', pidr_cd, pass_args=True))
@@ -688,5 +688,4 @@ dispatcher.add_handler(CommandHandler('pidr_sall', sr))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
-time.sleep(3)
 updater.start_polling(read_latency=3)

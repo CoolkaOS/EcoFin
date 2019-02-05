@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client_secrets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/credentials.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/send_files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedback.json" beforeDir="false" afterPath="$PROJECT_DIR$/feedback.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,75 +19,76 @@
     <session id="-1735043316">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="json" value="5" />
-          <entry key="py" value="17" />
+          <entry key="json" value="8" />
+          <entry key="py" value="20" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="5" />
+          <entry key="JSON" value="8" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="17" />
+          <entry key="Python" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="59" />
           <entry key="json" value="141" />
-          <entry key="py" value="2807" />
+          <entry key="py" value="2909" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="141" />
-          <entry key="Python" value="2866" />
+          <entry key="Python" value="2968" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="1326">
+              <caret line="587" column="68" lean-forward="true" selection-start-line="587" selection-start-column="68" selection-end-line="587" selection-end-column="68" />
               <folding>
                 <element signature="e#730#1079#0" />
-                <element signature="e#1116#2115#0" />
-                <element signature="e#2149#4874#0" />
-                <element signature="e#4924#5877#0" />
-                <element signature="e#5916#6380#0" />
-                <element signature="e#6418#8156#0" />
-                <element signature="e#6488#8124#0" />
-                <element signature="e#8217#11104#0" />
-                <element signature="e#11156#14171#0" />
-                <element signature="e#14229#15626#0" />
-                <element signature="e#15656#16911#0" />
-                <element signature="e#16963#20711#0" />
-                <element signature="e#20758#20865#0" />
-                <element signature="e#20901#20964#0" />
-                <element signature="e#20997#22196#0" />
-                <element signature="e#22233#23642#0" />
-                <element signature="e#23678#24952#0" />
-                <element signature="e#24987#25430#0" />
-                <element signature="e#25466#25702#0" />
-                <element signature="e#25954#26838#0" />
-                <element signature="e#26871#26980#0" />
-                <element signature="e#27015#27328#0" />
-                <element signature="e#27363#27573#0" />
-                <element signature="e#27631#27964#0" />
-                <element signature="e#27997#28458#0" />
-                <element signature="e#28565#28650#0" />
+                <element signature="e#1129#2128#0" />
+                <element signature="e#2173#4898#0" />
+                <element signature="e#4948#5901#0" />
+                <element signature="e#5951#6415#0" />
+                <element signature="e#6453#8191#0" />
+                <element signature="e#8252#11139#0" />
+                <element signature="e#11191#14206#0" />
+                <element signature="e#14264#15661#0" />
+                <element signature="e#15691#16946#0" />
+                <element signature="e#16998#20746#0" />
+                <element signature="e#20778#20932#0" />
+                <element signature="e#20963#21026#0" />
+                <element signature="e#21059#22258#0" />
+                <element signature="e#22295#23704#0" />
+                <element signature="e#23740#25014#0" />
+                <element signature="e#25049#25501#0" />
+                <element signature="e#25537#25777#0" />
+                <element signature="e#25811#25980#0" />
+                <element signature="e#26016#26900#0" />
+                <element signature="e#26933#27053#0" />
+                <element signature="e#27088#27401#0" />
+                <element signature="e#27436#27646#0" />
+                <element signature="e#27704#28037#0" />
+                <element signature="e#28070#28531#0" />
+                <element signature="e#28560#28657#0" />
               </folding>
             </state>
           </provider>
@@ -94,20 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/problems2.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
+            <state relative-caret-position="833">
               <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="804" lean-forward="true" selection-start-line="804" selection-end-line="807" selection-end-column="22" />
-              <folding>
-                <element signature="e#26426#28057#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -121,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feedback.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -133,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
+            <state>
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -179,9 +170,11 @@
         <option value="$PROJECT_DIR$/problems2.json" />
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py" />
         <option value="$PROJECT_DIR$/totable.py" />
-        <option value="$PROJECT_DIR$/code.py" />
         <option value="$PROJECT_DIR$/results.json" />
         <option value="$PROJECT_DIR$/feedback.json" />
+        <option value="$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
+        <option value="$PROJECT_DIR$/send_files.py" />
+        <option value="$PROJECT_DIR$/code.py" />
       </list>
     </option>
   </component>
@@ -197,7 +190,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,12 +201,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksandr Odnakov\PycharmProjects\ecov2" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr Odnakov\PycharmProjects\ecov2" />
       <recent name="C:\Users\Aleksandr Odnakov\PycharmProjects\ecov2\venv" />
@@ -232,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.send_files">
     <configuration name="code" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ecov2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -254,8 +250,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="send_files" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ecov2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/send_files.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.code" />
+      <item itemvalue="Python.send_files" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.send_files" />
         <item itemvalue="Python.code" />
       </list>
     </recent_temporary>
@@ -286,7 +308,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
@@ -305,14 +327,14 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24983476" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50033045" side_tool="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.2147651" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.304698" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -382,22 +404,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/problems2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -406,44 +414,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="804" lean-forward="true" selection-start-line="804" selection-end-line="807" selection-end-column="22" />
-          <folding>
-            <element signature="e#26426#28057#0" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code.py">
+    <entry file="file://$PROJECT_DIR$/problems2.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="e#730#1079#0" />
-            <element signature="e#1116#2115#0" />
-            <element signature="e#2149#4874#0" />
-            <element signature="e#4924#5877#0" />
-            <element signature="e#5916#6380#0" />
-            <element signature="e#6418#8156#0" />
-            <element signature="e#6488#8124#0" />
-            <element signature="e#8217#11104#0" />
-            <element signature="e#11156#14171#0" />
-            <element signature="e#14229#15626#0" />
-            <element signature="e#15656#16911#0" />
-            <element signature="e#16963#20711#0" />
-            <element signature="e#20758#20865#0" />
-            <element signature="e#20901#20964#0" />
-            <element signature="e#20997#22196#0" />
-            <element signature="e#22233#23642#0" />
-            <element signature="e#23678#24952#0" />
-            <element signature="e#24987#25430#0" />
-            <element signature="e#25466#25702#0" />
-            <element signature="e#25954#26838#0" />
-            <element signature="e#26871#26980#0" />
-            <element signature="e#27015#27328#0" />
-            <element signature="e#27363#27573#0" />
-            <element signature="e#27631#27964#0" />
-            <element signature="e#27997#28458#0" />
-            <element signature="e#28565#28650#0" />
-          </folding>
+        <state relative-caret-position="833">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -457,7 +434,72 @@
     <entry file="file://$PROJECT_DIR$/feedback.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client_secrets.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/credentials.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/GD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/send_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <marker date="1549353863268" expanded="true" signature="1104:1342" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="587" column="68" lean-forward="true" selection-start-line="587" selection-start-column="68" selection-end-line="587" selection-end-column="68" />
+          <folding>
+            <element signature="e#730#1079#0" />
+            <element signature="e#1129#2128#0" />
+            <element signature="e#2173#4898#0" />
+            <element signature="e#4948#5901#0" />
+            <element signature="e#5951#6415#0" />
+            <element signature="e#6453#8191#0" />
+            <element signature="e#8252#11139#0" />
+            <element signature="e#11191#14206#0" />
+            <element signature="e#14264#15661#0" />
+            <element signature="e#15691#16946#0" />
+            <element signature="e#16998#20746#0" />
+            <element signature="e#20778#20932#0" />
+            <element signature="e#20963#21026#0" />
+            <element signature="e#21059#22258#0" />
+            <element signature="e#22295#23704#0" />
+            <element signature="e#23740#25014#0" />
+            <element signature="e#25049#25501#0" />
+            <element signature="e#25537#25777#0" />
+            <element signature="e#25811#25980#0" />
+            <element signature="e#26016#26900#0" />
+            <element signature="e#26933#27053#0" />
+            <element signature="e#27088#27401#0" />
+            <element signature="e#27436#27646#0" />
+            <element signature="e#27704#28037#0" />
+            <element signature="e#28070#28531#0" />
+            <element signature="e#28560#28657#0" />
+          </folding>
         </state>
       </provider>
     </entry>
