@@ -22,6 +22,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
+job_queue = updater.job_queue
 DAY = [0]
 TIME = 14400
 
@@ -64,7 +65,7 @@ def confirmation(bot, updater):
 
 
 @run_async
-def query_h(bot, updater):
+def query_h(bot, updater, job_queue):
     time.sleep(random.uniform(0, 0.7))
     call = updater.callback_query
     if call.message:
@@ -79,11 +80,11 @@ def query_h(bot, updater):
                 else:
                         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                               text=call.message.text)
-                        compete_conf(bot, updater)
+                start_carousel(bot, updater, 1, job_queue)
             except KeyError:
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                       text=call.message.text)
-                compete_conf(bot, updater)
+                start_carousel(bot, updater, 1, job_queue)
 
     if call.data == 'agree':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
@@ -94,10 +95,10 @@ def query_h(bot, updater):
 
     if call.data == 'want':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
-        start_carousel(bot, updater, 1)
+        start_carousel(bot, updater, 1, job_queue)
     if call.data == 'not want':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
-        start_carousel(bot, updater, 0)
+        start_carousel(bot, updater, 0, job_queue)
 
     if call.data == 'rules':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
@@ -201,7 +202,7 @@ def print_rules(bot, updater):
 
 
 @run_async
-def start_carousel(bot, updater, compete):
+def start_carousel(bot, updater, compete, job_queue):
     time.sleep(random.uniform(0, 0.7))
     contest = pidr_cd(bot, updater)[0]
     today = pidr_cd(bot, updater)[1]
@@ -242,21 +243,33 @@ def start_carousel(bot, updater, compete):
                                    compete,
                                    'started']]]
     wr.write_results(players)
+    time.sleep(random.uniform(0, 0.7))
+    print('tour')
     bot.send_message(
         chat_id=updater.callback_query.message.chat.id,
         text='Тур стартует! Решайте внимательно и осторожно...')
     time.sleep(random.uniform(0, 0.7))
     print_problem(bot, updater, 1)
     if contest:
-        time.sleep(TIME)
-        players = wr.read_results()
-        if players[str(updater.callback_query.message.chat.id)][2][len(
-                players[str(updater.callback_query.message.chat.id)][2]) - 1][3] == 'started':
-            bot.send_message(chat_id=updater.callback_query.message.chat.id, text='ВРЕМЯ ИСТЕКЛО!')
-            players[str(updater.callback_query.message.chat.id)][2][len(
-                players[str(updater.callback_query.message.chat.id)][2]) - 1][3] = 'ended'
-            wr.write_results(players)
-            result(bot, updater)
+        job_queue.run_once(timer, TIME, context=updater.callback_query.message.chat.id)
+
+
+def timer(bot, job):
+    players = wr.read_results()
+    if players[str(job.context)][2][len(
+        players[str(job.context)][2]) - 1][3] == 'started':
+        bot.send_message(chat_id=job.context, text='ВРЕМЯ ИСТЕКЛО!')
+        players[str(job.context)][2][len(
+            players[str(job.context)][2]) - 1][3] = 'ended'
+        wr.write_results(players)
+        bot.send_message(
+            chat_id=job.context,
+            text='Ура! Тур завершён!\nРезультаты будут опубликованы в боте и на странице: vk.com/sashashivarov')
+        result(bot, updater)
+        bot.send_message(
+            chat_id=job.context,
+            text='А сейчас вы сможете оставить свой комментарий/пожелания, например, какая задача вам понравилась больше всего, какая меньше.\nСпасибо большое, за то что приняли участие в проекты, если вы хотите поддержать нас, то ')
+        donate(bot, updater)
 
 
 @run_async
@@ -323,13 +336,16 @@ def select_problems(bot, updater):
 
 @run_async
 def print_problem(bot, updater, *args):
+    print('aaaa')
     time.sleep(random.uniform(0, 0.7))
     num = args[0]
+    print(num)
     if 'callback_query' in str(updater):
         message = updater.callback_query.message
     else:
         message = updater.message
     markup = telegram.ForceReply()
+    print('ssss')
     if pidr_cd(bot, updater)[0]:
         bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
         if num == 12:
@@ -476,7 +492,9 @@ def rest(bot, updater):
 @run_async
 def result(bot, updater):
     time.sleep(random.uniform(0, 0.7))
-    if 'callback_query' in str(updater):
+    if type(updater) is int:
+        id = updater
+    elif 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
         id = updater.message.chat.id
@@ -638,6 +656,7 @@ def cheats(bot, updater):
     ''')
 
 
+@run_async
 def feedback(bot, updater):
     time.sleep(random.uniform(0, 0.7))
     if 'callback_query' in str(updater):
@@ -671,6 +690,7 @@ def thx_fb(bot, updater):
     wr.write_feedback(fb)
 
 
+@run_async
 def donate(bot, updater):
     time.sleep(random.uniform(0, 0.7))
     if 'callback_query' in str(updater):
@@ -693,7 +713,7 @@ def sr(bot, updater):
         time.sleep(60*5)
 
 
-dispatcher.add_handler(CallbackQueryHandler(query_h))
+dispatcher.add_handler(CallbackQueryHandler(query_h, pass_job_queue=True))
 dispatcher.add_handler(CommandHandler('pidr_cl', clear))
 dispatcher.add_handler(CommandHandler('pidr_cd', pidr_cd, pass_args=True))
 dispatcher.add_handler(CommandHandler('problems', select_problems))
@@ -712,4 +732,4 @@ dispatcher.add_handler(CommandHandler('pidr_sall', sr))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
-updater.start_polling(read_latency=3)
+updater.start_polling(read_latency=2)
