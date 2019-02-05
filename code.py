@@ -15,6 +15,7 @@ import wr
 import logging
 import time
 import totable
+import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
@@ -28,6 +29,7 @@ problems = wr.read_problems()
 
 
 def pidr_cd(bot, updater, args=[]):
+    time.sleep(random.random())
     try:
         DAY[0] = int(args[0])
         bot.send_message(chat_id=updater.message.chat.id, text='Успешно!' )
@@ -42,6 +44,7 @@ def pidr_cd(bot, updater, args=[]):
 
 @run_async
 def confirmation(bot, updater):
+    time.sleep(random.random())
     players = wr.read_results()
     if str(updater.message.chat.id) in players:
         bot.send_message(chat_id=updater.message.chat.id,
@@ -62,6 +65,7 @@ def confirmation(bot, updater):
 
 @run_async
 def query_h(bot, updater):
+    time.sleep(random.random())
     call = updater.callback_query
     if call.message:
         if call.data == "contest":
@@ -128,6 +132,7 @@ def query_h(bot, updater):
 
 @run_async
 def send_welcome(bot, updater):
+    time.sleep(random.random())
     if pidr_cd(bot, updater)[0]:
         btnlist = [
             telegram.InlineKeyboardButton('Старт.', callback_data='contest'),
@@ -147,6 +152,7 @@ def send_welcome(bot, updater):
 
 @run_async
 def compete_conf(bot, updater):
+    time.sleep(random.random())
     btnlist = [
         telegram.InlineKeyboardButton('Желаю.', callback_data='want'),
         telegram.InlineKeyboardButton('Не желаю.', callback_data='not want')
@@ -157,6 +163,7 @@ def compete_conf(bot, updater):
 
 
 def print_rules(bot, updater):
+    time.sleep(random.random())
     bot.send_message(chat_id=updater.callback_query.message.chat.id, text='''Правила: 
 
 Как сдавать ответ: 
@@ -195,6 +202,7 @@ def print_rules(bot, updater):
 
 @run_async
 def start_carousel(bot, updater, compete):
+    time.sleep(random.random())
     contest = pidr_cd(bot, updater)[0]
     today = pidr_cd(bot, updater)[1]
     players = wr.read_results()
@@ -252,6 +260,7 @@ def start_carousel(bot, updater, compete):
 
 @run_async
 def select_problems(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         message = updater.callback_query.message
     else:
@@ -313,6 +322,7 @@ def select_problems(bot, updater):
 
 @run_async
 def print_problem(bot, updater, *args):
+    time.sleep(random.random())
     num = args[0]
     if 'callback_query' in str(updater):
         message = updater.callback_query.message
@@ -377,6 +387,7 @@ def calc(id, players):
 
 @run_async
 def answer_problem(bot, updater):
+    time.sleep(random.random())
     message = updater.message
     players = wr.read_results()
     try:
@@ -461,7 +472,9 @@ def rest(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Auch!')
 
 
+@run_async
 def result(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
@@ -492,7 +505,9 @@ def result(bot, updater):
         bot.send_message(chat_id=id, text='Ты ещё не начал этот раз.')
 
 
+@run_async
 def allresults(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
@@ -526,7 +541,9 @@ def allresults(bot, updater):
         bot.send_message(chat_id=id, text='Ты ещё не начал.')
 
 
+@run_async
 def show_time(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
@@ -588,7 +605,9 @@ def send_fb(bot, updater):
     bot.send_document(chat_id=updater.message.chat.id, document=doc)
 
 
+@run_async
 def show_menu(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
@@ -617,6 +636,7 @@ def cheats(bot, updater):
 
 
 def feedback(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
@@ -649,6 +669,7 @@ def thx_fb(bot, updater):
 
 
 def donate(bot, updater):
+    time.sleep(random.random())
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
     else:
