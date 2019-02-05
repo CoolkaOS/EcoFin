@@ -80,7 +80,6 @@ def query_h(bot, updater, job_queue):
                 else:
                         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                               text=call.message.text)
-                start_carousel(bot, updater, 1, job_queue)
             except KeyError:
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                       text=call.message.text)
