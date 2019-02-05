@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,11 +56,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="266" column="41" lean-forward="true" selection-start-line="266" selection-start-column="41" selection-end-line="266" selection-end-column="41" />
+            <state relative-caret-position="545">
+              <caret line="265" column="41" selection-start-line="265" selection-start-column="41" selection-end-line="265" selection-end-column="41" />
               <folding>
                 <element signature="e#6783#8419#0" />
-                <marker date="1549369636181" expanded="true" signature="11142:12005" ph="..." />
+                <marker date="1549370187709" expanded="true" signature="11124:11987" ph="..." />
               </folding>
             </state>
           </provider>
@@ -138,6 +137,7 @@
       <find>random.random</find>
       <find>time.sleep(random.uniform(0.1, 0.4))</find>
       <find>compete_conf</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -438,11 +438,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="266" column="41" lean-forward="true" selection-start-line="266" selection-start-column="41" selection-end-line="266" selection-end-column="41" />
+        <state relative-caret-position="545">
+          <caret line="265" column="41" selection-start-line="265" selection-start-column="41" selection-end-line="265" selection-end-column="41" />
           <folding>
             <element signature="e#6783#8419#0" />
-            <marker date="1549369636181" expanded="true" signature="11142:12005" ph="..." />
+            <marker date="1549370187709" expanded="true" signature="11124:11987" ph="..." />
           </folding>
         </state>
       </provider>

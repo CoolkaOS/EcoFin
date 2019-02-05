@@ -244,7 +244,6 @@ def start_carousel(bot, updater, compete, job_queue):
                                    'started']]]
     wr.write_results(players)
     time.sleep(random.uniform(0, 0.7))
-    print('tour')
     bot.send_message(
         chat_id=updater.callback_query.message.chat.id,
         text='Тур стартует! Решайте внимательно и осторожно...')
@@ -336,16 +335,13 @@ def select_problems(bot, updater):
 
 @run_async
 def print_problem(bot, updater, *args):
-    print('aaaa')
     time.sleep(random.uniform(0, 0.7))
     num = args[0]
-    print(num)
     if 'callback_query' in str(updater):
         message = updater.callback_query.message
     else:
         message = updater.message
     markup = telegram.ForceReply()
-    print('ssss')
     if pidr_cd(bot, updater)[0]:
         bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
         if num == 12:
