@@ -50,7 +50,7 @@ def confirmation(bot, updater):
     if str(updater.message.chat.id) in players:
         bot.send_message(chat_id=updater.message.chat.id,
                          text='Йо, ты уже в системе. Просто используй команды.\nВот тебе.')
-        show_menu(bot, updater)
+        #show_menu(bot, updater)
     else:
         btnlist = [
             telegram.InlineKeyboardButton('Согласен.', callback_data='agree'),
