@@ -22,7 +22,7 @@ TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
-DAY = [0]
+DAY = [4]
 TIME = 18000
 
 problems = wr.read_problems()
@@ -583,7 +583,7 @@ def show_time(bot, updater):
                     user_time = dt.datetime.strptime(players[str(id)][2][len(
                         players[str(id)][2]) - 1][0], "%Y-%m-%d %H:%M:%S.%f")
                     now = dt.datetime.now()
-                    dif = dt.timedelta(seconds=(TIME - 10800)) + user_time - now
+                    dif = dt.timedelta(seconds=(TIME - 14400)) + user_time - now
                     bot.send_message(
                         chat_id=id,
                         text='Время осталось: {}'.format(
