@@ -16,15 +16,14 @@ import logging
 import time
 import totable
 import random
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
 DAY = [0]
-TIME = 14400
+TIME = 18000
 
 problems = wr.read_problems()
 
@@ -49,7 +48,7 @@ def confirmation(bot, updater):
     players = wr.read_results()
     if str(updater.message.chat.id) in players:
         bot.send_message(chat_id=updater.message.chat.id,
-                         text='Йо, ты уже в системе. Просто используй команды.\nВот тебе.')
+                         text='Йо, ты уже в системе. Просто используй команды.')
         #show_menu(bot, updater)
     else:
         btnlist = [
@@ -165,7 +164,11 @@ def compete_conf(bot, updater):
 
 def print_rules(bot, updater):
     time.sleep(random.uniform(0, 0.7))
-    bot.send_message(chat_id=updater.callback_query.message.chat.id, text='''Правила: 
+    if 'callback_query' in str(updater):
+        id = updater.callback_query.message.chat.id
+    else:
+        id = updater.message.chat.id
+    bot.send_message(chat_id=id, text='''Правила: 
 
 Как сдавать ответ: 
 
@@ -175,7 +178,7 @@ def print_rules(bot, updater):
 
 Время, которое даётся на решение задач, ограничено пятью часами. 
 
-Вы можете выбрать любой промежуток времени в который вам будет удобно решить задачи, начиная с 8:00am 9ого января, заканчивая 1:00am 11ого января. (время указано по Мск)
+Вы можете выбрать любой промежуток времени в который вам будет удобно решить задачи, начиная с 8:00am 9ого февраля, заканчивая 1:00am 11ого февраля. (время указано по Мск)
 
 Вопросы по условию можно задавать авторам задач на протяжении всего тура в вк:
 Александр - vk.com/sashashivarov
@@ -198,8 +201,11 @@ def print_rules(bot, updater):
 Если на задачу дан неверный ответ, то команда получает за решение 0 баллов, а следующая задача будет стоить на 3 балла меньше (но не менее 3 баллов она стоить не может).
 
 По всем техническим вопросам - vk.com/coolkaos, @CoolkaOS''')
-    if updater.callback_query.message.text != 'Меню:':
-        send_welcome(bot, updater)
+    try:
+        if updater.callback_query.message.text != 'Меню:':
+            send_welcome(bot, updater)
+    except AttributeError:
+        pass
 
 
 @run_async
@@ -651,6 +657,7 @@ def cheats(bot, updater):
 /pidr_sr
 /pidr_sf
 /pidr_sall
+/pidr_repost
     ''')
 
 
@@ -711,6 +718,17 @@ def sr(bot, updater):
         time.sleep(60*5)
 
 
+def repost(bot, updater):
+    for id in wr.read_results():
+        try:
+            bot.send_message(chat_id=id, text='''Напоминаем, что через 10 минут у тебя появится возможность начать карусель. 
+Можешь выбрать любое удобное время с 9ого января 8:00 утра, заканчивая 11ым февраля, 1:00 утра. 
+Обязательно прочитай правила, там есть много полезного. Если вдруг долго не получается решить задачу, не надо расстраиваться, отправь какой-нибудь ответ и переходи к следующей!)
+Удачи! Желаем тебе приятно провести время!)''')
+        except telegram.error.Unauthorized:
+            pass
+
+
 dispatcher.add_handler(CallbackQueryHandler(query_h, pass_job_queue=True))
 dispatcher.add_handler(CommandHandler('pidr_cl', clear))
 dispatcher.add_handler(CommandHandler('pidr_cd', pidr_cd, pass_args=True))
@@ -722,12 +740,16 @@ dispatcher.add_handler(CommandHandler('time', show_time))
 dispatcher.add_handler(CommandHandler('pidr_sr', send_res))
 #dispatcher.add_handler(CommandHandler('menu', show_menu))
 dispatcher.add_handler(CommandHandler('pidr_cheats', cheats))
-dispatcher.add_handler(CommandHandler('pidr_cheats', cheats))
 dispatcher.add_handler(CommandHandler('feedback', feedback))
 dispatcher.add_handler(CommandHandler('donate', donate))
 dispatcher.add_handler(CommandHandler('pidr_sf', send_fb))
 dispatcher.add_handler(CommandHandler('pidr_sall', sr))
+dispatcher.add_handler(CommandHandler('pidr_repost', repost))
+dispatcher.add_handler(CommandHandler('rules', print_rules))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
 updater.start_polling(read_latency=2)
+
+
+
