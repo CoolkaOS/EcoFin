@@ -29,7 +29,7 @@ def clear(id):
 
 
 def read_problems():
-    pr = open('problems2.json', 'r', encoding='utf-8')
+    pr = open('problems2.json', 'r', encoding='utf-8-sig')
     reader = pr.read()
     return json.loads(reader)
 
