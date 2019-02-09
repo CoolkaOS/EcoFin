@@ -22,7 +22,7 @@ TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
-DAY = [4]
+DAY = [5]
 TIME = 18000
 
 problems = wr.read_problems()
@@ -721,10 +721,7 @@ def sr(bot, updater):
 def repost(bot, updater):
     for id in wr.read_results():
         try:
-            bot.send_message(chat_id=id, text='''Напоминаем, что через 10 минут у тебя появится возможность начать карусель. 
-Можешь выбрать любое удобное время с 9ого января 8:00 утра, заканчивая 11ым февраля, 1:00 утра. 
-Обязательно прочитай правила, там есть много полезного. Если вдруг долго не получается решить задачу, не надо расстраиваться, отправь какой-нибудь ответ и переходи к следующей!)
-Удачи! Желаем тебе приятно провести время!)''')
+            bot.send_message(chat_id=id, text='''Небольшое уточнение, не 10, а 15 минут. И необходимо нажать /start.''')
         except telegram.error.Unauthorized:
             pass
 
