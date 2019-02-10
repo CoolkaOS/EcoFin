@@ -22,7 +22,7 @@ TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
-DAY = [5]
+DAY = [6]
 TIME = 18000
 
 problems = wr.read_problems()
