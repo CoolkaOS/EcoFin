@@ -658,6 +658,7 @@ def cheats(bot, updater):
 /pidr_sf
 /pidr_sall
 /pidr_repost
+/pidr_congrats
     ''')
 
 
@@ -726,6 +727,12 @@ def repost(bot, updater):
             pass
 
 
+def congrats(bot, updater):
+    ids = [698067784, 364811146, 143103809, 553434494, 196182600, 451593371, 135674428, 298465764]
+    for id in ids:
+        bot.send_message(chat_id=id, text='Напишите пожалуйста своё ФИО сюда)\n@sasha_shivarov или\nhttps://vk.com/sashashivarov\nНо только в одно место!')
+
+
 dispatcher.add_handler(CallbackQueryHandler(query_h, pass_job_queue=True))
 dispatcher.add_handler(CommandHandler('pidr_cl', clear))
 dispatcher.add_handler(CommandHandler('pidr_cd', pidr_cd, pass_args=True))
@@ -743,6 +750,7 @@ dispatcher.add_handler(CommandHandler('pidr_sf', send_fb))
 dispatcher.add_handler(CommandHandler('pidr_sall', sr))
 dispatcher.add_handler(CommandHandler('pidr_repost', repost))
 dispatcher.add_handler(CommandHandler('rules', print_rules))
+dispatcher.add_handler(CommandHandler('pidr_congrats', congrats))
 dispatcher.add_handler(MessageHandler(filter_fb & Filters.reply, thx_fb))
 dispatcher.add_handler(MessageHandler(Filters.reply, answer_problem))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
