@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,13 +46,13 @@
         <counts>
           <entry key="Python Console" value="126" />
           <entry key="json" value="207" />
-          <entry key="py" value="4453" />
+          <entry key="py" value="4455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="207" />
-          <entry key="Python" value="4467" />
+          <entry key="Python" value="4469" />
           <entry key="Scratch" value="112" />
         </counts>
       </usages-collector>
@@ -64,10 +63,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="660" column="14" selection-start-line="660" selection-start-column="14" selection-end-line="660" selection-end-column="14" />
+            <state relative-caret-position="170">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
               <folding>
-                <marker date="1549881020253" expanded="true" signature="30646:30923" ph="..." />
+                <marker date="1549881052602" expanded="true" signature="30646:30923" ph="..." />
               </folding>
             </state>
           </provider>
@@ -535,10 +534,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="660" column="14" selection-start-line="660" selection-start-column="14" selection-end-line="660" selection-end-column="14" />
+        <state relative-caret-position="170">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
           <folding>
-            <marker date="1549881020253" expanded="true" signature="30646:30923" ph="..." />
+            <marker date="1549881052602" expanded="true" signature="30646:30923" ph="..." />
           </folding>
         </state>
       </provider>
