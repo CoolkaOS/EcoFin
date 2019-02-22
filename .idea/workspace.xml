@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,17 +14,17 @@
     <session id="-1735043316">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -64,11 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="724" column="131" selection-start-line="724" selection-start-column="131" selection-end-line="724" selection-end-column="131" />
-              <folding>
-                <marker date="1549909301365" expanded="true" signature="30662:30939" ph="..." />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -76,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/results.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="5509" column="1" selection-start-line="5509" selection-start-column="1" selection-end-line="5509" selection-end-column="1" />
+            <state relative-caret-position="93653">
+              <caret line="7496" column="1" selection-start-line="7496" selection-start-column="1" selection-end-line="7496" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -159,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,7 +176,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -520,20 +516,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results.json">
+    <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="5509" column="1" selection-start-line="5509" selection-start-column="1" selection-end-line="5509" selection-end-column="1" />
+        <state relative-caret-position="102">
+          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code.py">
+    <entry file="file://$PROJECT_DIR$/results.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="724" column="131" selection-start-line="724" selection-start-column="131" selection-end-line="724" selection-end-column="131" />
-          <folding>
-            <marker date="1549909301365" expanded="true" signature="30662:30939" ph="..." />
-          </folding>
+        <state relative-caret-position="93653">
+          <caret line="7496" column="1" selection-start-line="7496" selection-start-column="1" selection-end-line="7496" selection-end-column="1" />
         </state>
       </provider>
     </entry>
