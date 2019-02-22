@@ -18,11 +18,11 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
+TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
-DAY = [3]
+DAY = [4]
 
 problems = wr.read_problems()
 
@@ -36,8 +36,8 @@ def pidr_cd(bot, updater, args=[]):
         pass
     today = dt.datetime.now(tz=pytz.timezone('Europe/Moscow'))
     contest = False
-    if today.weekday() == DAY[0] or today.weekday() == (DAY[0]+1) % 7:
-        contest = True
+    #if today.weekday() == DAY[0] or today.weekday() == (DAY[0]+1) % 7:
+    #    contest = True
     return contest, today
 
 
@@ -77,7 +77,7 @@ def query_h(bot, updater, job_queue):
                     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text)
                     start_carousel(bot, updater, 1, job_queue)
                 else:
-                    bot.send_message(chat_id=id, text='Ты уже писал контест!')
+                    bot.send_message(chat_id=id, text='Ты уже писал контест или уже начал дорешку!')
             except KeyError:
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                       text=call.message.text)
@@ -310,7 +310,10 @@ def select_problems(bot, updater):
     today = pidr_cd(bot, updater)[1]
     state = pidr_cd(bot, updater)[0]
     name = str(message.chat.username) + '  ' + str(message.chat.first_name) + '  ' + str(message.chat.last_name)
-    contest = players[str(message.chat.id)][2][len(players[str(message.chat.id)][2])-1][3]
+    if str(message.chat.id) in players:
+        contest = players[str(message.chat.id)][2][len(players[str(message.chat.id)][2])-1][3]
+    else:
+        contest = ''
     if str(message.chat.id) not in players:
         players[str(message.chat.id)] = [message.chat.id,
                                          '@' + name,
@@ -347,6 +350,7 @@ def select_problems(bot, updater):
                                            2,
                                            'not contest{}'.format(state)])
         wr.write_results(players)
+    contest = players[str(message.chat.id)][2][len(players[str(message.chat.id)][2])-1][3]
     if contest[:11] == 'not contest':
         btnlist = []
         for i in range(1, 8, 6):
