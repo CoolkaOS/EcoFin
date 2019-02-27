@@ -36,8 +36,10 @@ def pidr_cd(bot, updater, args=[]):
         pass
     today = dt.datetime.now(tz=pytz.timezone('Europe/Moscow'))
     contest = False
-    #if today.weekday() == DAY[0] or today.weekday() == (DAY[0]+1) % 7:
-    #    contest = True
+    end = dt.datetime(2019, 3, 6, 1, tzinfo=pytz.timezone('Europe/Moscow'))
+    start = dt.datetime(2019, 3 , 1, 8, tzinfo=pytz.timezone('Europe/Moscow'))
+    if start < today < end:
+        contest = True
     return contest, today
 
 
@@ -105,6 +107,22 @@ def query_h(bot, updater, job_queue):
     if call.data == 'problems':
         if call.message.text != 'Меню:':
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text )
+        players = wr.read_results()
+        id = call.message.chat.id
+        try:
+            if players[str(id)][2][-1][3] == 'started':
+                btnlist = [
+                    telegram.InlineKeyboardButton('Да.', callback_data='yeah'),
+                    telegram.InlineKeyboardButton('Нет.', callback_data='_')
+                ]
+                markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2))
+                bot.send_message(chat_id=id, text='Ты уверен?\nЕсли нажмёшь \"Да.\", то ты закончишь констест и начнёшь дорещку.', reply_markup=markup)
+            else:
+                select_problems(bot, updater)
+        except KeyError:
+            select_problems(bot, updater)
+
+    if call.data == 'yeah':
         select_problems(bot, updater)
 
     if call.data[:3] == 'pr_':
@@ -128,9 +146,9 @@ def query_h(bot, updater, job_queue):
 
     if call.data == 'menu':
         btnlist = [
-            telegram.InlineKeyboardButton('Показать задачки.', callback_data='problems'),
-            telegram.InlineKeyboardButton('Правила.', callback_data='rules'),
-            telegram.InlineKeyboardButton('Другое.', callback_data='others')
+            telegram.InlineKeyboardButton('Другая часть меню.', callback_data='others'),
+            telegram.InlineKeyboardButton('Показать правила.', callback_data='rules'),
+            telegram.InlineKeyboardButton('Показать задачки.', callback_data='problems')
         ]
         btn = telegram.InlineKeyboardButton('Начать Контест!', callback_data='contest')
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[btn]))
@@ -275,9 +293,10 @@ def start_carousel(bot, updater, compete, job_queue):
         text='Тур стартует! Решайте внимательно и осторожно...')
     time.sleep(random.uniform(0, 0.7))
     print_problem(bot, updater, 1)
-    if pidr_cd(bot, updater):
+    if pidr_cd(bot, updater)[0]:
         end = dt.datetime(2019, 3, 6, 1, tzinfo=pytz.timezone('Europe/Moscow'))
         job_queue.run_once(timer, (end-today).total_seconds(), context=updater.callback_query.message.chat.id)
+        #job_queue.run_once(timer, 10, context=updater.callback_query.message.chat.id)
 
 
 def timer(bot, job):
@@ -296,8 +315,7 @@ def timer(bot, job):
             chat_id=job.context,
             text='А сейчас вы сможете оставить свой комментарий/пожелания, например, какая задача вам понравилась больше всего, какая меньше.\nСпасибо большое, за то что приняли участие в проекты, если вы хотите поддержать нас, то ')
         donate(bot, job.context)
-        select_problems(bot, updater)
-
+        show_menu(bot, job.context)
 
 @run_async
 def select_problems(bot, updater):
@@ -641,13 +659,14 @@ def show_menu(bot, updater):
     time.sleep(random.uniform(0, 0.7))
     if 'callback_query' in str(updater):
         id = updater.callback_query.message.chat.id
-    else:
+    elif hasattr(updater, 'message'):
         id = updater.message.chat.id
+    else:
+        id=updater
     btnlist = [
-        telegram.InlineKeyboardButton('Показать задачки.', callback_data='problems'),
-        telegram.InlineKeyboardButton('Правила.', callback_data='rules'),
-        telegram.InlineKeyboardButton('Другое.', callback_data='others')
-
+        telegram.InlineKeyboardButton('Другая часть меню.', callback_data='others'),
+        telegram.InlineKeyboardButton('Показать правила.', callback_data='rules'),
+        telegram.InlineKeyboardButton('Показать задачки.', callback_data='problems')
     ]
     btn = telegram.InlineKeyboardButton('Начать Контест!', callback_data='contest')
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[btn]))
