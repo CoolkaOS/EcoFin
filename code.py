@@ -36,8 +36,8 @@ def pidr_cd(bot, updater, args=[]):
         pass
     today = dt.datetime.now(tz=pytz.timezone('Europe/Moscow'))
     contest = False
-    end = dt.datetime(2019, 3, 6, 1, tzinfo=pytz.timezone('Europe/Moscow'))
-    start = dt.datetime(2019, 3 , 1, 8, tzinfo=pytz.timezone('Europe/Moscow'))
+    end = dt.datetime(2019, 3, 10, 1, tzinfo=pytz.timezone('Europe/Moscow'))
+    start = dt.datetime(2019, 3, 4, 20, tzinfo=pytz.timezone('Europe/Moscow'))
     if start < today < end:
         contest = True
     return contest, today
@@ -294,7 +294,7 @@ def start_carousel(bot, updater, compete, job_queue):
     time.sleep(random.uniform(0, 0.7))
     print_problem(bot, updater, 1)
     if pidr_cd(bot, updater)[0]:
-        end = dt.datetime(2019, 3, 6, 1, tzinfo=pytz.timezone('Europe/Moscow'))
+        end = dt.datetime(2019, 3, 10, 1, tzinfo=pytz.timezone('Europe/Moscow'))
         job_queue.run_once(timer, (end-today).total_seconds(), context=updater.callback_query.message.chat.id)
         #job_queue.run_once(timer, 10, context=updater.callback_query.message.chat.id)
 
