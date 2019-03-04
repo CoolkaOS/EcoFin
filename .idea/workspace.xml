@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wr.py" beforeDir="false" afterPath="$PROJECT_DIR$/wr.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +34,7 @@
           <entry key="jpg" value="1" />
           <entry key="json" value="17" />
           <entry key="png" value="1" />
-          <entry key="py" value="25" />
+          <entry key="py" value="26" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
@@ -41,21 +43,21 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="17" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="24" />
+          <entry key="Python" value="25" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="287" />
-          <entry key="json" value="885" />
-          <entry key="py" value="5535" />
+          <entry key="json" value="889" />
+          <entry key="py" value="5547" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="885" />
-          <entry key="Python" value="5710" />
+          <entry key="JSON" value="889" />
+          <entry key="Python" value="5722" />
           <entry key="Scratch" value="112" />
         </counts>
       </usages-collector>
@@ -63,11 +65,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3570">
-              <caret line="219" column="134" selection-start-line="219" selection-start-column="134" selection-end-line="219" selection-end-column="134" />
+            <state relative-caret-position="442">
+              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -95,11 +97,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/results.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -161,11 +172,11 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/feedback.json" />
         <option value="$PROJECT_DIR$/problems1.json" />
-        <option value="$PROJECT_DIR$/wr.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
-        <option value="$PROJECT_DIR$/results.json" />
         <option value="$PROJECT_DIR$/problems2.json" />
         <option value="$PROJECT_DIR$/code.py" />
+        <option value="$PROJECT_DIR$/wr.py" />
+        <option value="$PROJECT_DIR$/results.json" />
       </list>
     </option>
   </component>
@@ -509,13 +520,6 @@
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/problems.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -532,13 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/problems2.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -548,8 +545,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="219" column="134" selection-start-line="219" selection-start-column="134" selection-end-line="219" selection-end-column="134" />
+        <state relative-caret-position="442">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
