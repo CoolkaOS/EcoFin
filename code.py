@@ -18,7 +18,8 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
+#TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'  #Ecopro
+TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk' #Curr
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
@@ -36,8 +37,8 @@ def pidr_cd(bot, updater, args=[]):
         pass
     today = dt.datetime.now(tz=pytz.timezone('Europe/Moscow'))
     contest = False
-    end = dt.datetime(2019, 3, 10, 1, tzinfo=pytz.timezone('Europe/Moscow'))
-    start = dt.datetime(2019, 3, 4, 20, tzinfo=pytz.timezone('Europe/Moscow'))
+    end = dt.datetime(2019, 3, 11, 1, tzinfo=pytz.timezone('Europe/Moscow'))
+    start = dt.datetime(2019, 3, 5, 8, tzinfo=pytz.timezone('Europe/Moscow'))
     if start < today < end:
         contest = True
     return contest, today
@@ -265,7 +266,8 @@ def start_carousel(bot, updater, compete, job_queue):
                                           '9': [0],
                                           '10': [0],
                                           '11': [0],
-                                          '12': [0]},
+                                          '12': [0],
+                                          '13': [0]},
                                          compete,
                                          'started'])
     else:
@@ -283,7 +285,8 @@ def start_carousel(bot, updater, compete, job_queue):
                                     '9': [0],
                                     '10': [0],
                                     '11': [0],
-                                    '12': [0]},
+                                    '12': [0],
+                                    '13': [0]},
                                    compete,
                                    'started']]]
     wr.write_results(players)
@@ -294,7 +297,7 @@ def start_carousel(bot, updater, compete, job_queue):
     time.sleep(random.uniform(0, 0.7))
     print_problem(bot, updater, 1)
     if pidr_cd(bot, updater)[0]:
-        end = dt.datetime(2019, 3, 10, 1, tzinfo=pytz.timezone('Europe/Moscow'))
+        end = dt.datetime(2019, 3, 11, 1, tzinfo=pytz.timezone('Europe/Moscow'))
         job_queue.run_once(timer, (end-today).total_seconds(), context=updater.callback_query.message.chat.id)
         #job_queue.run_once(timer, 10, context=updater.callback_query.message.chat.id)
 
@@ -347,7 +350,8 @@ def select_problems(bot, updater):
                                             '9': [0],
                                             '10': [0],
                                             '11': [0],
-                                            '12': [0]},
+                                            '12': [0],
+                                            '13': [0]},
                                            2,
                                            'not contest{}'.format(state)]]]
         wr.write_results(players)
@@ -364,7 +368,8 @@ def select_problems(bot, updater):
                                             '9': [0],
                                             '10': [0],
                                             '11': [0],
-                                            '12': [0]},
+                                            '12': [0],
+                                            '13': [0]},
                                            2,
                                            'not contest{}'.format(state)])
         wr.write_results(players)
@@ -384,7 +389,8 @@ def select_problems(bot, updater):
                 str(i + 4), callback_data='pr_{}'.format(i + 4)))
             btnlist.append(telegram.InlineKeyboardButton(
                 str(i + 5), callback_data='pr_{}'.format(i + 5)))
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=6))
+        btnlist.append(telegram.InlineKeyboardButton('13', callback_data='pr_13'))
+        markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=7))
         bot.send_message(
             chat_id=message.chat.id,
             text='Выбери задачу из списка!',
@@ -404,21 +410,27 @@ def print_problem(bot, updater, *args):
     markup = telegram.ForceReply()
     players = wr.read_results()
     if players[str(message.chat.id)][2][len(players[str(message.chat.id)][2]) - 1][2] == 'started':
-        bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
         if num == 12:
-            bot.send_photo(chat_id=message.chat.id, photo=open('12.jpg', 'rb'))
+            bot.send_photo(chat_id=message.chat.id, photo=open('12pr.png.jpg', 'rb'))
+        else:
+            bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
+            if num == 9:
+                bot.send_photo(chat_id=message.chat.id, photo=open('graph.png', 'rb'))
         bot.send_message(chat_id=message.chat.id, text='Ваш ответ к задаче {} :'.format(num), reply_markup=markup)
     else:
         try:
             ass = players[str(message.chat.id)][2][len(players[str(message.chat.id)][2]) - 1][1][str(num)]
             if len(ass) == 1:
-                bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
                 if num == 12:
-                    bot.send_photo(chat_id=message.chat.id, photo=open('12.jpg', 'rb'))
+                    bot.send_photo(chat_id=message.chat.id, photo=open('12pr.png.jpg', 'rb'))
+                else:
+                    bot.send_message(chat_id=message.chat.id, text=problems[num - 1][0])
+                    if num == 9:
+                        bot.send_photo(chat_id=message.chat.id, photo=open('graph.png', 'rb'))
                 bot.send_message(
-                    chat_id=message.chat.id,
-                    text='Ваш ответ к задаче {} :'.format(num),
-                    reply_markup=markup)
+                        chat_id=message.chat.id,
+                        text='Ваш ответ к задаче {} :'.format(num),
+                        reply_markup=markup)
             else:
                 bot.send_message(
                     chat_id=message.chat.id,
@@ -497,7 +509,7 @@ def answer_problem(bot, updater):
                             result(bot, updater)
                             bot.send_message(
                                 chat_id=message.chat.id,
-                                text='А сейчас вы сможете оставить свой комментарий/пожелания, например, какая задача вам понравилась больше всего, какая меньше.\nhttps://goo.gl/forms/XBIyXoYEEQUrB9IB2\nСпасибо большое, за то что приняли участие в проекты, если вы хотите поддержать нас, то ')
+                                text='А сейчас вы сможете оставить свой комментарий/пожелания, например, какая задача вам понравилась больше всего, какая меньше.\nhttps://goo.gl/forms/AhCxR9I5XMX6ic2V2\nСпасибо большое, за то что приняли участие в проекты, если вы хотите поддержать нас, то ')
                             donate(bot, updater)
                             select_problems(bot, updater)
                         else:
@@ -569,10 +581,13 @@ def result(bot, updater):
             text += 'на Карусели :\n'
         else:
             text += 'на Дорешке :\n'
-        for res in list(str(i) for i in range(1, 7)):
-            text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
+        for res in list(str(i) for i in range(1, 8)):
+            if int(res) >= 3:
+                text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
+            else:
+                text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
         text = text[:-2] + '\n'
-        for res in list(str(i) for i in range(7, 13)):
+        for res in list(str(i) for i in range(8, 14)):
             text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
         text = text[:-2] + '\n'
         if resu[3][:11] != 'not contest':
@@ -606,10 +621,13 @@ def allresults(bot, updater):
                     text += 'на Карусели :\n'
                 else:
                     text += 'на Дорешке :\n'
-                for res in list(str(i) for i in range(1, 7)):
-                    text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
+                for res in list(str(i) for i in range(1, 8)):
+                    if int(res)>=3:
+                        text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
+                    else:
+                        text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
                 text = text[:-2] + '\n'
-                for res in list(str(i) for i in range(7, 13)):
+                for res in list(str(i) for i in range(8, 14)):
                     text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
                 text = text[:-2] + '\n'
                 if resu[3][:11] != 'not contest':
