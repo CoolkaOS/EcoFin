@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/problems3.json" beforeDir="false" afterPath="$PROJECT_DIR$/problems3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wr.py" beforeDir="false" afterPath="$PROJECT_DIR$/wr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/totable.py" beforeDir="false" afterPath="$PROJECT_DIR$/totable.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,74 +12,31 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1735043316">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="28" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="3" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.41" value="1" />
-          <entry key="project.open.time.5" value="3" />
-          <entry key="project.open.time.6" value="4" />
-          <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="7" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="29" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="jpg" value="1" />
-          <entry key="json" value="29" />
-          <entry key="png" value="2" />
-          <entry key="py" value="30" />
-          <entry key="txt" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Image" value="3" />
-          <entry key="JSON" value="29" />
-          <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="28" />
-          <entry key="Scratch" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="Python Console" value="433" />
-          <entry key="json" value="945" />
-          <entry key="py" value="6001" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JSON" value="945" />
-          <entry key="Python" value="6151" />
-          <entry key="Scratch" value="283" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="105">
               <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/results.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
+              <caret selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/totable.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -97,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GD</find>
       <find>rules</find>
       <find>time</find>
       <find>alina</find>
@@ -120,13 +74,14 @@
       <find>start</find>
       <find>goo</find>
       <find>9</find>
-      <find>13</find>
       <find>#</find>
       <find>n_cols</find>
       <find>12</find>
       <find>calc</find>
       <find>dt</find>
       <find>coolkaos</find>
+      <find>14</find>
+      <find>13</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,7 +92,6 @@
       <list>
         <option value="$PROJECT_DIR$/venv/цк.py" />
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py" />
-        <option value="$PROJECT_DIR$/totable.py" />
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
         <option value="$PROJECT_DIR$/send_files.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -151,6 +105,7 @@
         <option value="$PROJECT_DIR$/problems3.json" />
         <option value="$PROJECT_DIR$/code.py" />
         <option value="$PROJECT_DIR$/results.json" />
+        <option value="$PROJECT_DIR$/totable.py" />
       </list>
     </option>
   </component>
@@ -170,17 +125,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecov2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="EcoFin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EcoFin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -361,10 +307,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
@@ -402,9 +348,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -418,20 +361,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/цк.py" />
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/wr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="16" column="23" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/totable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/wr.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/totable.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/telegram/ext/filters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-35">
@@ -439,43 +370,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (3).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4416">
-          <caret line="678" column="25" lean-forward="true" selection-start-line="678" selection-start-column="25" selection-end-line="678" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="804" lean-forward="true" selection-start-line="804" selection-end-line="807" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (3).py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/__init__.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py" />
     <entry file="file://$PROJECT_DIR$/client_secrets.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/credentials.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/GD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
     <entry file="file://$PROJECT_DIR$/send_files.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
@@ -492,13 +397,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/problems1.json" />
-    <entry file="file://$PROJECT_DIR$/totable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -545,7 +443,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="105">
           <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
@@ -553,7 +451,14 @@
     <entry file="file://$PROJECT_DIR$/results.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/totable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
         </state>
       </provider>
     </entry>
