@@ -18,8 +18,8 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-#TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'  #Ecopro
-TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk' #Curr
+TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'  #Ecopro
+#TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk' #Curr
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
@@ -590,8 +590,8 @@ def result(bot, updater):
         #for res in list(str(i) for i in range(1, 7)):
         for res in list(str(i) for i in range(1, 8)):
             if int(res) >= 3:
-                #text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
-                text += '№{} - {}  |'.format(res, resu[1][res][0]) + ' '
+                text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
+                #text += '№{} - {}  |'.format(res, resu[1][res][0]) + ' '
             else:
                 text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
         text = text[:-2] + '\n'
@@ -633,8 +633,8 @@ def allresults(bot, updater):
                 #for res in list(str(i) for i in range(1, 7)):
                 for res in list(str(i) for i in range(1, 8)):
                     if int(res)>=3:
-                        #text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
-                        text += '№{} - {}  |'.format(res, resu[1][res][0]) + ' '
+                        text += '№{} - {}   |'.format(res, resu[1][res][0]) + ' '
+                        #text += '№{} - {}  |'.format(res, resu[1][res][0]) + ' '
                     else:
                         text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
                 text = text[:-2] + '\n'

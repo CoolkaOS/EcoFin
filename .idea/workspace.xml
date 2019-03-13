@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/code.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,19 +12,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="589" column="54" selection-start-line="589" selection-start-column="54" selection-end-line="589" selection-end-column="54" />
+            <state relative-caret-position="105">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/results.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
+            <state relative-caret-position="133">
               <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
               <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
               <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/wr.py" />
         <option value="$PROJECT_DIR$/totable.py" />
         <option value="$PROJECT_DIR$/problems3.json" />
-        <option value="$PROJECT_DIR$/code.py" />
         <option value="$PROJECT_DIR$/results.json" />
+        <option value="$PROJECT_DIR$/code.py" />
       </list>
     </option>
   </component>
@@ -494,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="589" column="54" selection-start-line="589" selection-start-column="54" selection-end-line="589" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/totable.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
@@ -510,7 +503,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/results.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="133">
           <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
           <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
@@ -567,6 +560,13 @@
           <caret line="3046" column="25" selection-start-line="3046" selection-start-column="25" selection-end-line="3046" selection-end-column="25" />
           <caret line="3095" column="25" selection-start-line="3095" selection-start-column="25" selection-end-line="3095" selection-end-column="25" />
           <caret line="3150" column="25" selection-start-line="3150" selection-start-column="25" selection-end-line="3150" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
     </entry>
