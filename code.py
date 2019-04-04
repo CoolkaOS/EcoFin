@@ -18,8 +18,7 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'  #Ecopro
-#TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk' #Curr
+TOKEN = ''
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
