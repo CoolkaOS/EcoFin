@@ -25,33 +25,33 @@ def totable():
         for j in range(0, len(results[id][2])):
             a = ws.cell(
                 row=1 + index * 3,
-                column=2 + 13 * j,
+                column=2 + 14 * j,
                 value=results[id][2][j][0])
             a = ws.merge_cells(
                 start_row=1 + index * 3,
-                start_column=2 + 13 * j,
+                start_column=2 + 14 * j,
                 end_row=1 + index * 3,
-                end_column=14 + 13 * j)
+                end_column=15 + 14 * j)
             cells = [{}, {}]
-            for i in range(1, 13):
+            for i in range(1, 14):
                 cells[0][i] = ws.cell(row=2 + index * 3,
-                                      column=1 + int(i) + j * 13,
+                                      column=1 + int(i) + j * 14,
                                       value=results[id][2][j][1][str(i)][0])
-            for i in range(1, 13):
+            for i in range(1, 14):
                 try:
                     cells[1][i] = ws.cell(row=3 + index * 3,
-                                          column=1 + int(i) + j * 13,
+                                          column=1 + int(i) + j * 14,
                                           value=results[id][2][j][1][str(i)][1])
                 except IndexError:
                     cells[1][i] = ws.cell(
-                        row=3 + index * 3, column=1 + int(i) + j * 13, value=0)
+                        row=3 + index * 3, column=1 + int(i) + j * 14, value=0)
             ws.cell(
                 row=2 + index * 3,
-                column=14 + j * 13,
+                column=15 + j * 14,
                 value=results[id][2][j][2])
             ws.cell(
                 row=3 + index * 3,
-                column=14 + j * 13,
+                column=15 + j * 14,
                 value=results[id][2][j][3])
 
         index += 1

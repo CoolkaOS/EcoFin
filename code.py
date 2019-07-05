@@ -18,8 +18,7 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'  #Ecopro
-#TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk' #Curr
+TOKEN = ''
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
@@ -266,7 +265,8 @@ def start_carousel(bot, updater, compete, job_queue):
                                           '10': [0],
                                           '11': [0],
                                           '12': [0],
-                                          '13': [0]},
+                                          '13': [0],
+                                          '14': [0]},
                                          compete,
                                          'started'])
     else:
@@ -285,7 +285,8 @@ def start_carousel(bot, updater, compete, job_queue):
                                     '10': [0],
                                     '11': [0],
                                     '12': [0],
-                                    '13': [0]},
+                                    '13': [0],
+                                    '14': [0]},
                                    compete,
                                    'started']]]
     wr.write_results(players)
@@ -350,7 +351,8 @@ def select_problems(bot, updater):
                                             '10': [0],
                                             '11': [0],
                                             '12': [0],
-                                            '13': [0]},
+                                            '13': [0],
+                                            '14': [0]},
                                            2,
                                            'not contest{}'.format(state)]]]
         wr.write_results(players)
@@ -368,14 +370,15 @@ def select_problems(bot, updater):
                                             '10': [0],
                                             '11': [0],
                                             '12': [0],
-                                            '13': [0]},
+                                            '13': [0],
+                                            '14': [0]},
                                            2,
                                            'not contest{}'.format(state)])
         wr.write_results(players)
     contest = players[str(message.chat.id)][2][len(players[str(message.chat.id)][2])-1][3]
     if contest[:11] == 'not contest':
         btnlist = []
-        for i in range(1, 8, 6):
+        for i in range(1, 9, 7):
             btnlist.append(telegram.InlineKeyboardButton(
                 str(i), callback_data='pr_{}'.format(i)))
             btnlist.append(telegram.InlineKeyboardButton(
@@ -388,7 +391,8 @@ def select_problems(bot, updater):
                 str(i + 4), callback_data='pr_{}'.format(i + 4)))
             btnlist.append(telegram.InlineKeyboardButton(
                 str(i + 5), callback_data='pr_{}'.format(i + 5)))
-        btnlist.append(telegram.InlineKeyboardButton('13', callback_data='pr_13'))
+            btnlist.append(telegram.InlineKeyboardButton(
+                str(i + 6), callback_data='pr_{}'.format(i + 6)))
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=7))
         bot.send_message(
             chat_id=message.chat.id,
@@ -591,7 +595,7 @@ def result(bot, updater):
                 text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
         text = text[:-2] + '\n'
         #for res in list(str(i) for i in range(7, 13)):
-        for res in list(str(i) for i in range(8, 14)):
+        for res in list(str(i) for i in range(8, 15)):
             text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
         text = text[:-2] + '\n'
         if resu[3][:11] != 'not contest':
@@ -634,7 +638,7 @@ def allresults(bot, updater):
                         text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
                 text = text[:-2] + '\n'
                 #for res in list(str(i) for i in range(7, 13)):
-                for res in list(str(i) for i in range(8, 14)):
+                for res in list(str(i) for i in range(8, 15)):
                     text += '№{} - {} |'.format(res, resu[1][res][0]) + ' '
                 text = text[:-2] + '\n'
                 if resu[3][:11] != 'not contest':

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="1cdf9c6e-2914-43f3-b3bc-a8d65a134226" name="Default Changelist" comment="" />
+>>>>>>> 21079875714b5eb30d150a274e2f4d372c45988f
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="-1735043316">
       <usages-collector id="statistics.lifecycle.project">
@@ -62,17 +67,95 @@
       </usages-collector>
     </session>
   </component>
+=======
+>>>>>>> 21079875714b5eb30d150a274e2f4d372c45988f
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="105">
               <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+              <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+              <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+              <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+              <caret line="255" column="25" selection-start-line="255" selection-start-column="25" selection-end-line="255" selection-end-column="25" />
+              <caret line="311" column="25" selection-start-line="311" selection-start-column="25" selection-end-line="311" selection-end-column="25" />
+              <caret line="366" column="25" selection-start-line="366" selection-start-column="25" selection-end-line="366" selection-end-column="25" />
+              <caret line="422" column="25" selection-start-line="422" selection-start-column="25" selection-end-line="422" selection-end-column="25" />
+              <caret line="484" column="25" selection-start-line="484" selection-start-column="25" selection-end-line="484" selection-end-column="25" />
+              <caret line="541" column="25" selection-start-line="541" selection-start-column="25" selection-end-line="541" selection-end-column="25" />
+              <caret line="602" column="25" selection-start-line="602" selection-start-column="25" selection-end-line="602" selection-end-column="25" />
+              <caret line="658" column="25" selection-start-line="658" selection-start-column="25" selection-end-line="658" selection-end-column="25" />
+              <caret line="713" column="25" selection-start-line="713" selection-start-column="25" selection-end-line="713" selection-end-column="25" />
+              <caret line="773" column="25" selection-start-line="773" selection-start-column="25" selection-end-line="773" selection-end-column="25" />
+              <caret line="831" column="25" selection-start-line="831" selection-start-column="25" selection-end-line="831" selection-end-column="25" />
+              <caret line="891" column="25" selection-start-line="891" selection-start-column="25" selection-end-line="891" selection-end-column="25" />
+              <caret line="946" column="25" selection-start-line="946" selection-start-column="25" selection-end-line="946" selection-end-column="25" />
+              <caret line="1006" column="25" selection-start-line="1006" selection-start-column="25" selection-end-line="1006" selection-end-column="25" />
+              <caret line="1063" column="25" selection-start-line="1063" selection-start-column="25" selection-end-line="1063" selection-end-column="25" />
+              <caret line="1119" column="25" selection-start-line="1119" selection-start-column="25" selection-end-line="1119" selection-end-column="25" />
+              <caret line="1170" column="25" selection-start-line="1170" selection-start-column="25" selection-end-line="1170" selection-end-column="25" />
+              <caret line="1231" column="25" selection-start-line="1231" selection-start-column="25" selection-end-line="1231" selection-end-column="25" />
+              <caret line="1286" column="25" selection-start-line="1286" selection-start-column="25" selection-end-line="1286" selection-end-column="25" />
+              <caret line="1342" column="25" selection-start-line="1342" selection-start-column="25" selection-end-line="1342" selection-end-column="25" />
+              <caret line="1399" column="25" selection-start-line="1399" selection-start-column="25" selection-end-line="1399" selection-end-column="25" />
+              <caret line="1454" column="25" selection-start-line="1454" selection-start-column="25" selection-end-line="1454" selection-end-column="25" />
+              <caret line="1509" column="25" selection-start-line="1509" selection-start-column="25" selection-end-line="1509" selection-end-column="25" />
+              <caret line="1565" column="25" selection-start-line="1565" selection-start-column="25" selection-end-line="1565" selection-end-column="25" />
+              <caret line="1629" column="25" selection-start-line="1629" selection-start-column="25" selection-end-line="1629" selection-end-column="25" />
+              <caret line="1688" column="25" selection-start-line="1688" selection-start-column="25" selection-end-line="1688" selection-end-column="25" />
+              <caret line="1745" column="25" selection-start-line="1745" selection-start-column="25" selection-end-line="1745" selection-end-column="25" />
+              <caret line="1800" column="25" selection-start-line="1800" selection-start-column="25" selection-end-line="1800" selection-end-column="25" />
+              <caret line="1860" column="25" selection-start-line="1860" selection-start-column="25" selection-end-line="1860" selection-end-column="25" />
+              <caret line="1917" column="25" selection-start-line="1917" selection-start-column="25" selection-end-line="1917" selection-end-column="25" />
+              <caret line="1973" column="25" selection-start-line="1973" selection-start-column="25" selection-end-line="1973" selection-end-column="25" />
+              <caret line="2034" column="25" selection-start-line="2034" selection-start-column="25" selection-end-line="2034" selection-end-column="25" />
+              <caret line="2092" column="25" selection-start-line="2092" selection-start-column="25" selection-end-line="2092" selection-end-column="25" />
+              <caret line="2150" column="25" selection-start-line="2150" selection-start-column="25" selection-end-line="2150" selection-end-column="25" />
+              <caret line="2206" column="25" selection-start-line="2206" selection-start-column="25" selection-end-line="2206" selection-end-column="25" />
+              <caret line="2258" column="25" selection-start-line="2258" selection-start-column="25" selection-end-line="2258" selection-end-column="25" />
+              <caret line="2317" column="25" selection-start-line="2317" selection-start-column="25" selection-end-line="2317" selection-end-column="25" />
+              <caret line="2366" column="25" selection-start-line="2366" selection-start-column="25" selection-end-line="2366" selection-end-column="25" />
+              <caret line="2422" column="25" selection-start-line="2422" selection-start-column="25" selection-end-line="2422" selection-end-column="25" />
+              <caret line="2478" column="25" selection-start-line="2478" selection-start-column="25" selection-end-line="2478" selection-end-column="25" />
+              <caret line="2538" column="25" selection-start-line="2538" selection-start-column="25" selection-end-line="2538" selection-end-column="25" />
+              <caret line="2595" column="25" selection-start-line="2595" selection-start-column="25" selection-end-line="2595" selection-end-column="25" />
+              <caret line="2650" column="25" selection-start-line="2650" selection-start-column="25" selection-end-line="2650" selection-end-column="25" />
+              <caret line="2706" column="25" selection-start-line="2706" selection-start-column="25" selection-end-line="2706" selection-end-column="25" />
+              <caret line="2763" column="25" selection-start-line="2763" selection-start-column="25" selection-end-line="2763" selection-end-column="25" />
+              <caret line="2826" column="25" selection-start-line="2826" selection-start-column="25" selection-end-line="2826" selection-end-column="25" />
+              <caret line="2882" column="25" selection-start-line="2882" selection-start-column="25" selection-end-line="2882" selection-end-column="25" />
+              <caret line="2932" column="25" selection-start-line="2932" selection-start-column="25" selection-end-line="2932" selection-end-column="25" />
+              <caret line="2988" column="25" selection-start-line="2988" selection-start-column="25" selection-end-line="2988" selection-end-column="25" />
+              <caret line="3046" column="25" selection-start-line="3046" selection-start-column="25" selection-end-line="3046" selection-end-column="25" />
+              <caret line="3095" column="25" selection-start-line="3095" selection-start-column="25" selection-end-line="3095" selection-end-column="25" />
+              <caret line="3150" column="25" selection-start-line="3150" selection-start-column="25" selection-end-line="3150" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/totable.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="538">
+              <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> 21079875714b5eb30d150a274e2f4d372c45988f
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -84,10 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GD</find>
-      <find>rules</find>
-      <find>time</find>
-      <find>alina</find>
       <find>artdf0</find>
       <find>kate</find>
       <find>mistr555</find>
@@ -107,13 +186,17 @@
       <find>start</find>
       <find>goo</find>
       <find>9</find>
-      <find>13</find>
       <find>#</find>
       <find>n_cols</find>
       <find>12</find>
       <find>calc</find>
       <find>dt</find>
       <find>coolkaos</find>
+      <find>14</find>
+      <find>13</find>
+      <find>&quot;13&quot;</find>
+      <find>&quot;13&quot;:</find>
+      <find>&quot;2&quot;:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,7 +207,6 @@
       <list>
         <option value="$PROJECT_DIR$/venv/цк.py" />
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py" />
-        <option value="$PROJECT_DIR$/totable.py" />
         <option value="$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
         <option value="$PROJECT_DIR$/send_files.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -135,9 +217,10 @@
         <option value="$PROJECT_DIR$/nicks.txt" />
         <option value="$PROJECT_DIR$/scratch_5.py" />
         <option value="$PROJECT_DIR$/wr.py" />
+        <option value="$PROJECT_DIR$/totable.py" />
         <option value="$PROJECT_DIR$/problems3.json" />
-        <option value="$PROJECT_DIR$/code.py" />
         <option value="$PROJECT_DIR$/results.json" />
+        <option value="$PROJECT_DIR$/code.py" />
       </list>
     </option>
   </component>
@@ -158,17 +241,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecov2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="ecov2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="EcoFin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EcoFin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -348,14 +422,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1366" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50033045" side_tool="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50033045" side_tool="true" weight="0.32741934" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32885906" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.24966443" />
@@ -363,21 +436,21 @@
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49966952" weight="0.32885906" />
-      <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.49966952" weight="0.32885906" />
+      <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.49966952" weight="0.32636657" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32885906" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50033045" side_tool="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50033045" side_tool="true" weight="0.32741934" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32885906" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.24966443" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.24966443" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -388,9 +461,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -405,20 +475,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/цк.py" />
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/wr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="16" column="23" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/totable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/wr.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/totable.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/telegram/ext/filters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-35">
@@ -426,43 +484,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (3).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4416">
-          <caret line="678" column="25" lean-forward="true" selection-start-line="678" selection-start-column="25" selection-end-line="678" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="804" lean-forward="true" selection-start-line="804" selection-end-line="807" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (3).py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/__init__.py" />
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/code - Copy (2).py" />
     <entry file="file://$PROJECT_DIR$/client_secrets.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/credentials.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/GD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/heroku/my_env/econom/GD.py" />
     <entry file="file://$PROJECT_DIR$/send_files.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
@@ -479,13 +511,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/problems1.json" />
-    <entry file="file://$PROJECT_DIR$/totable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -525,21 +550,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/problems3.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="479">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/results.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+=======
+    <entry file="file://$PROJECT_DIR$/totable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+>>>>>>> 21079875714b5eb30d150a274e2f4d372c45988f
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="119">
+=======
+        <state relative-caret-position="133">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+          <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+          <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+          <caret line="255" column="25" selection-start-line="255" selection-start-column="25" selection-end-line="255" selection-end-column="25" />
+          <caret line="311" column="25" selection-start-line="311" selection-start-column="25" selection-end-line="311" selection-end-column="25" />
+          <caret line="366" column="25" selection-start-line="366" selection-start-column="25" selection-end-line="366" selection-end-column="25" />
+          <caret line="422" column="25" selection-start-line="422" selection-start-column="25" selection-end-line="422" selection-end-column="25" />
+          <caret line="484" column="25" selection-start-line="484" selection-start-column="25" selection-end-line="484" selection-end-column="25" />
+          <caret line="541" column="25" selection-start-line="541" selection-start-column="25" selection-end-line="541" selection-end-column="25" />
+          <caret line="602" column="25" selection-start-line="602" selection-start-column="25" selection-end-line="602" selection-end-column="25" />
+          <caret line="658" column="25" selection-start-line="658" selection-start-column="25" selection-end-line="658" selection-end-column="25" />
+          <caret line="713" column="25" selection-start-line="713" selection-start-column="25" selection-end-line="713" selection-end-column="25" />
+          <caret line="773" column="25" selection-start-line="773" selection-start-column="25" selection-end-line="773" selection-end-column="25" />
+          <caret line="831" column="25" selection-start-line="831" selection-start-column="25" selection-end-line="831" selection-end-column="25" />
+          <caret line="891" column="25" selection-start-line="891" selection-start-column="25" selection-end-line="891" selection-end-column="25" />
+          <caret line="946" column="25" selection-start-line="946" selection-start-column="25" selection-end-line="946" selection-end-column="25" />
+          <caret line="1006" column="25" selection-start-line="1006" selection-start-column="25" selection-end-line="1006" selection-end-column="25" />
+          <caret line="1063" column="25" selection-start-line="1063" selection-start-column="25" selection-end-line="1063" selection-end-column="25" />
+          <caret line="1119" column="25" selection-start-line="1119" selection-start-column="25" selection-end-line="1119" selection-end-column="25" />
+          <caret line="1170" column="25" selection-start-line="1170" selection-start-column="25" selection-end-line="1170" selection-end-column="25" />
+          <caret line="1231" column="25" selection-start-line="1231" selection-start-column="25" selection-end-line="1231" selection-end-column="25" />
+          <caret line="1286" column="25" selection-start-line="1286" selection-start-column="25" selection-end-line="1286" selection-end-column="25" />
+          <caret line="1342" column="25" selection-start-line="1342" selection-start-column="25" selection-end-line="1342" selection-end-column="25" />
+          <caret line="1399" column="25" selection-start-line="1399" selection-start-column="25" selection-end-line="1399" selection-end-column="25" />
+          <caret line="1454" column="25" selection-start-line="1454" selection-start-column="25" selection-end-line="1454" selection-end-column="25" />
+          <caret line="1509" column="25" selection-start-line="1509" selection-start-column="25" selection-end-line="1509" selection-end-column="25" />
+          <caret line="1565" column="25" selection-start-line="1565" selection-start-column="25" selection-end-line="1565" selection-end-column="25" />
+          <caret line="1629" column="25" selection-start-line="1629" selection-start-column="25" selection-end-line="1629" selection-end-column="25" />
+          <caret line="1688" column="25" selection-start-line="1688" selection-start-column="25" selection-end-line="1688" selection-end-column="25" />
+          <caret line="1745" column="25" selection-start-line="1745" selection-start-column="25" selection-end-line="1745" selection-end-column="25" />
+          <caret line="1800" column="25" selection-start-line="1800" selection-start-column="25" selection-end-line="1800" selection-end-column="25" />
+          <caret line="1860" column="25" selection-start-line="1860" selection-start-column="25" selection-end-line="1860" selection-end-column="25" />
+          <caret line="1917" column="25" selection-start-line="1917" selection-start-column="25" selection-end-line="1917" selection-end-column="25" />
+          <caret line="1973" column="25" selection-start-line="1973" selection-start-column="25" selection-end-line="1973" selection-end-column="25" />
+          <caret line="2034" column="25" selection-start-line="2034" selection-start-column="25" selection-end-line="2034" selection-end-column="25" />
+          <caret line="2092" column="25" selection-start-line="2092" selection-start-column="25" selection-end-line="2092" selection-end-column="25" />
+          <caret line="2150" column="25" selection-start-line="2150" selection-start-column="25" selection-end-line="2150" selection-end-column="25" />
+          <caret line="2206" column="25" selection-start-line="2206" selection-start-column="25" selection-end-line="2206" selection-end-column="25" />
+          <caret line="2258" column="25" selection-start-line="2258" selection-start-column="25" selection-end-line="2258" selection-end-column="25" />
+          <caret line="2317" column="25" selection-start-line="2317" selection-start-column="25" selection-end-line="2317" selection-end-column="25" />
+          <caret line="2366" column="25" selection-start-line="2366" selection-start-column="25" selection-end-line="2366" selection-end-column="25" />
+          <caret line="2422" column="25" selection-start-line="2422" selection-start-column="25" selection-end-line="2422" selection-end-column="25" />
+          <caret line="2478" column="25" selection-start-line="2478" selection-start-column="25" selection-end-line="2478" selection-end-column="25" />
+          <caret line="2538" column="25" selection-start-line="2538" selection-start-column="25" selection-end-line="2538" selection-end-column="25" />
+          <caret line="2595" column="25" selection-start-line="2595" selection-start-column="25" selection-end-line="2595" selection-end-column="25" />
+          <caret line="2650" column="25" selection-start-line="2650" selection-start-column="25" selection-end-line="2650" selection-end-column="25" />
+          <caret line="2706" column="25" selection-start-line="2706" selection-start-column="25" selection-end-line="2706" selection-end-column="25" />
+          <caret line="2763" column="25" selection-start-line="2763" selection-start-column="25" selection-end-line="2763" selection-end-column="25" />
+          <caret line="2826" column="25" selection-start-line="2826" selection-start-column="25" selection-end-line="2826" selection-end-column="25" />
+          <caret line="2882" column="25" selection-start-line="2882" selection-start-column="25" selection-end-line="2882" selection-end-column="25" />
+          <caret line="2932" column="25" selection-start-line="2932" selection-start-column="25" selection-end-line="2932" selection-end-column="25" />
+          <caret line="2988" column="25" selection-start-line="2988" selection-start-column="25" selection-end-line="2988" selection-end-column="25" />
+          <caret line="3046" column="25" selection-start-line="3046" selection-start-column="25" selection-end-line="3046" selection-end-column="25" />
+          <caret line="3095" column="25" selection-start-line="3095" selection-start-column="25" selection-end-line="3095" selection-end-column="25" />
+          <caret line="3150" column="25" selection-start-line="3150" selection-start-column="25" selection-end-line="3150" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+>>>>>>> 21079875714b5eb30d150a274e2f4d372c45988f
           <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
