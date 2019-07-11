@@ -3,23 +3,17 @@
 import io
 import json
 
-code1 = '{"298465764": [298465764, "AlexOdnakov", "@CoolkaOS", ["2019-01-24 14:17:25.606708", {}, ["2019-01-24 14:24:35.609711", {}], ["2019-01-24 14:24:56.559005", {"1": 3, "2": 0, "3": 3, "4": 4}], ["2019-01-24 14:25:54.895257", {}], ["2019-01-24 14:26:08.515342", {"1": 3, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0}]]]}'
-
 
 def write_results(results):
-    res = open('results.json', 'w')
+    res = open('results.json', 'w', encoding='utf-8')
     writer = res.write
-    writer(json.dumps(results, indent=4, sort_keys=True))
+    writer(json.dumps(results, indent=2, sort_keys=True, ensure_ascii=False))
 
 
 def read_results():
-    res = open('results.json', 'r')
+    res = open('results.json', 'r', encoding='utf-8')
     reader = res.read()
     return json.loads(reader)
-
-
-def pretty_print():
-    print(json.dumps(read_results(), indent=4, sort_keys=True))
 
 
 def clear(id):
@@ -29,9 +23,15 @@ def clear(id):
 
 
 def read_problems():
-    pr = open('problems3.json', 'r', encoding='utf-8-sig')
+    pr = open('problems/problems.json', 'r', encoding='utf-8')
     reader = pr.read()
     return json.loads(reader)
+
+
+def write_problems(problems):
+    res = open('problems/problems.json', 'w', encoding='utf-8')
+    writer = res.write
+    writer(json.dumps(problems, indent=2, ensure_ascii=False))
 
 
 def read_feedback():
@@ -46,9 +46,6 @@ def write_feedback(feedback):
     writer(json.dumps(feedback, ensure_ascii=False))
 
 
-# indent=4, sort_keys=True
-
-
 def build_menu(buttons,
                n_cols,
                header_buttons=None,
@@ -59,3 +56,40 @@ def build_menu(buttons,
     if footer_buttons:
         menu.append(footer_buttons)
     return menu
+
+
+def read_admins():
+    fb = open('admins.json', 'r', encoding='utf-8')
+    reader = fb.read()
+    return json.loads(reader)
+
+
+def write_admins(admins):
+    fb = open('admins.json', 'w', encoding='utf-8')
+    writer = fb.write
+    writer(json.dumps(admins, ensure_ascii=False))
+
+
+def group_consecutives(vals, step=1):
+    run = []
+    result = [run]
+    expect = None
+    for v in vals:
+        if (v == expect) or (expect is None):
+            run.append(v)
+        else:
+            run = [v]
+            result.append(run)
+        expect = v + step
+    for part in result:
+        try:
+            if len(part) == 2:
+                i = result.index(part)
+                result[i] = part[0]
+                result.insert(i+1, part[1])
+            elif len(part) == 1:
+                i = result.index(part)
+                result[i] = part[0]
+        except TypeError:
+            pass
+    return result

@@ -18,7 +18,7 @@ import totable
 import random
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = ''
+TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 job_queue = updater.job_queue
@@ -652,9 +652,7 @@ def allresults(bot, updater):
         bot.send_message(chat_id=id, text='Ты ещё не начал.')
 
 
-
 def send_res(bot, updater):
-    #GD.find_file('res.json').GetContentFile('res.json')
     doc = open('results.json', 'rb')
     btnlist = [
         telegram.InlineKeyboardButton('Да.', callback_data='yes')
