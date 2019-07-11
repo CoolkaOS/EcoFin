@@ -233,6 +233,13 @@ def query_h(bot, updater,):
             problems = wr.read_problems()
             problem = call.data[4:]
             del(problems[problem])
+        if call.data == 'send_res':
+            send_res(bot, updater)
+        if call.data == 'send_fb':
+            send_fb(bot, updater)
+        if call.data == 'repost':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Смотрите ниже.')
+            bot.send_message(chat_id=call.message.chat.id, text='Ответьте на это сообщение тем, что хотите всем разослать.', reply_markup=FR)
 
 
 @run_async
@@ -360,6 +367,15 @@ class FilterAT(BaseFilter):
 filter_at = FilterAT()
 
 
+class FilterRep(BaseFilter):
+    def filter(self, message):
+        try:
+            return 'Ответьте на это сообщение тем, что хотите всем разослать.' == message.reply_to_message.text
+        except AttributeError:
+            return False
+
+filter_rep = FilterRep()
+
 @run_async
 def feedback(bot, updater):
     time.sleep(random.uniform(0, 0.7))
@@ -425,7 +441,10 @@ def admin(bot, updater):
     btnlist = [
         telegram.InlineKeyboardButton('Показать список участников.', callback_data='list'),
         telegram.InlineKeyboardButton('Показать задачи.', callback_data='probs'),
-        telegram.InlineKeyboardButton('Добавить админа.', callback_data='addadmin')
+        telegram.InlineKeyboardButton('Добавить админа.', callback_data='addadmin'),
+        telegram.InlineKeyboardButton('Отправить результаты.', callback_data='send_res'),
+        telegram.InlineKeyboardButton('Отправить отзывы.', callback_data='send_fb'),
+        telegram.InlineKeyboardButton('Отправить всем сообщение через бота.', callback_data='repost')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     if 'callback_query' in str(updater):
@@ -552,6 +571,26 @@ def add_task(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.',reply_markup=markup)
 
 
+def send_res(bot, updater):
+    doc = open('results.json', 'rb')
+    bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
+
+
+def send_fb(bot, updater):
+    doc = open('feedback.json', 'rb')
+    bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
+
+
+def repost(bot, updater):
+    mess = updater.message.text
+    for id in wr.read_results():
+        try:
+            bot.send_message(chat_id=id, text=mess)
+        except telegram.error.Unauthorized:
+            pass
+
+
+
 dispatcher.add_handler(CallbackQueryHandler(query_h))
 dispatcher.add_handler(CommandHandler('start', confirmation))
 dispatcher.add_handler(CommandHandler('admin', admin))
@@ -562,5 +601,6 @@ dispatcher.add_handler(MessageHandler(filter_fb, thx_fb))
 dispatcher.add_handler(MessageHandler(filter_aa, add_admin))
 dispatcher.add_handler(MessageHandler(filter_at, add_task))
 dispatcher.add_handler(MessageHandler(filter_ans, answer_problem))
+dispatcher.add_handler(MessageHandler(filter_rep, repost))
 dispatcher.add_handler(MessageHandler(Filters.chat, rest))
 updater.start_polling()
