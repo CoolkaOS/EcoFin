@@ -23,13 +23,13 @@ def clear(id):
 
 
 def read_problems():
-    pr = open('problems/problems.json', 'r', encoding='utf-8')
+    pr = open('problems/problems1.json', 'r', encoding='utf-8')
     reader = pr.read()
     return json.loads(reader)
 
 
 def write_problems(problems):
-    res = open('problems/problems.json', 'w', encoding='utf-8')
+    res = open('problems/problems1.json', 'w', encoding='utf-8')
     writer = res.write
     writer(json.dumps(problems, indent=2, ensure_ascii=False))
 

@@ -58,7 +58,7 @@ def get_nick(bot, updater):
     players = wr.read_results()
     id = updater.message.chat.id
     name = updater.message.text
-    players[str(id)] = players[str(id)]+[name, {'1':list(range(10,28))}, []]
+    players[str(id)] = players[str(id)]+[name, {}, []]
     wr.write_results(players)
     btnlist = [
         telegram.InlineKeyboardButton('Меню.', callback_data='menu')
@@ -130,13 +130,20 @@ def query_h(bot, updater,):
             problems = wr.read_problems()
             id = call.message.chat.id
             message_id = call.message.message_id
+            grouped = []
+            for d in wr.group_consecutives(problems[call.data[3:]][2]):
+                if type(d) == list:
+                    grouped.append('с {} по {}'.format(d[0], d[-1]))
+                else:
+                    grouped.append(str(d))
+            dates = ', '.join(grouped)
             btnlist = [
                 telegram.InlineKeyboardButton('Удалить.', callback_data='del_{}'.format(call.data[3:])),
                 telegram.InlineKeyboardButton('Назад.', callback_data='probs')
             ]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
             bot.edit_message_text(chat_id=id, message_id=message_id,
-                                  text=problems[call.data[3:]][0]+'\n\nОтвет: '+problems[call.data[3:]][1], reply_markup=markup)
+                                  text='Задача {}\n'.format(call.data[3:])+problems[call.data[3:]][0]+'\nОтвет: '+problems[call.data[3:]][1]+'\nДаты: '+dates, reply_markup=markup)
         # if call.data[:5] == 'hide_':
         #     id = call.message.chat.id
         #     message_id = call.message.message_id
@@ -220,7 +227,7 @@ def query_h(bot, updater,):
                                   text='Задача {}\n'.format(num)+str(problems[num][0])+'\n'+'Ответ: {}'.format(problems[num][1]),
                                   reply_markup=markup)
         if call.data == 'error':
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='solved')], n_cols=1))
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='contest')], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Вы пока не можете решать эту задачу.',
                                   reply_markup=markup)
@@ -228,11 +235,17 @@ def query_h(bot, updater,):
             markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('probs.', callback_data='solved')], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Читай ниже.')
-            bot.send_message(chat_id=call.message.chat.id,text='Отправьте текст задачи и ответ ответом на это сообщение.', reply_markup=FR)
+            bot.send_message(chat_id=call.message.chat.id, text='Отправьте текст задачи и ответ ответом на это сообщение.', reply_markup=FR)
         if call.data[:4] == 'del_':
             problems = wr.read_problems()
             problem = call.data[4:]
             del(problems[problem])
+            wr.write_problems(problems)
+            markup = telegram.InlineKeyboardMarkup(
+                wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
+                                  text='Задача успешно удалена.',
+                                  reply_markup=markup)
         if call.data == 'send_res':
             send_res(bot, updater)
         if call.data == 'send_fb':
@@ -478,7 +491,6 @@ def problems_list(bot, updater):
 
 
 
-
 @run_async
 def part_list(bot, updater):
     players = wr.read_results()
@@ -504,13 +516,20 @@ def print_list(bot, updater):
     id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     players = wr.read_results()
+    for i in range(1, 10):
+        if i in list(int(pr[:1]) for pr in problems.keys()):
+            ran = problems["{}.1".format(i)][2]
+            if ran == []:
+                ran = list(range(10, 28))
+            if "{}.1".format(i) not in players[str(id)][4]:
+                players[str(id)][3]["{}.1".format(i)] = ran
     btnlist = []
     for pr in problems:
         if pr in players[str(id)][3]:
             grouped = []
             for d in wr.group_consecutives(players[str(id)][3][pr]):
                 if type(d) == list:
-                    grouped.append('с {} по {}'.format(d[0],d[-1]))
+                    grouped.append('с {} по {}'.format(d[0], d[-1]))
                 else:
                     grouped.append(str(d))
             dates = ', '.join(grouped)
@@ -524,6 +543,7 @@ def print_list(bot, updater):
     footer = [telegram.InlineKeyboardButton('Показать решённые задачи.', callback_data='solved'), telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете задачу:\n-__- значит, что пока задача не доступна для решения.\n*__* значит, что задача доступна.', reply_markup=markup)
+    wr.write_results(players)
 
 
 @run_async
@@ -531,6 +551,8 @@ def answer_problem(bot, updater):
     problems = wr.read_problems()
     answer = updater.message.text
     problem = updater.message.reply_to_message.text[19:-2]
+    pr_1 = problem[:2]
+    pr_2 = problem[2:]
     try:
         float(answer)
         players = wr.read_results()
@@ -541,8 +563,8 @@ def answer_problem(bot, updater):
             ]
             del(players[str(updater.message.chat.id)][3][problem])
             players[str(updater.message.chat.id)][4].append(problem)
-            if int(problem) < len(problems):
-                players[str(updater.message.chat.id)][3][(str(int(problem)+1))] = list(range(10, 28))
+            if int(pr_2) < len(list(key for key in problems if key[:1] == pr_1)):
+                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = problems[pr_1+str(int(pr_2)+1)][2]
             wr.write_results(players)
         else:
             rep = 'Ответ неверный на задачу {} !'.format(problem)
@@ -562,9 +584,13 @@ def add_task(bot, updater):
     problems = wr.read_problems()
     problem = updater.message.text
     answer_ind = problem.find('Ответ: ')
-    answer = problem[answer_ind+7:]
-    problem = problem[:answer_ind]
-    problems[str(len(problems)+1)] = [problem, answer]
+    dates_ind = problem.find('Даты: ')
+    answer = problem[answer_ind+7:dates_ind-1]
+    num_ind = problem.find('\n')
+    num = problem[7:num_ind]
+    dates = problem[dates_ind+6:].split(',')
+    problem = problem[num_ind+1:answer_ind-1]
+    problems[num] = [problem, answer, list(int(d) for d in dates)]
     wr.write_problems(problems)
     markup = telegram.InlineKeyboardMarkup(
     wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
