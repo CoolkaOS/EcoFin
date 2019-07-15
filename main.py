@@ -131,7 +131,12 @@ def query_h(bot, updater,):
             id = call.message.chat.id
             message_id = call.message.message_id
             grouped = []
-            for d in wr.group_consecutives(problems[call.data[3:]][2]):
+            dates = []
+            if problems[call.data[3:]][2] == []:
+                dates = list(range(10, 28))
+            else:
+                dates = problems[call.data[3:]][2]
+            for d in wr.group_consecutives(dates):
                 if type(d) == list:
                     grouped.append('с {} по {}'.format(d[0], d[-1]))
                 else:
@@ -584,17 +589,26 @@ def add_task(bot, updater):
     problems = wr.read_problems()
     problem = updater.message.text
     answer_ind = problem.find('Ответ: ')
-    dates_ind = problem.find('Даты: ')
-    answer = problem[answer_ind+7:dates_ind-1]
+    dates_ind = problem.find('Даты:')
     num_ind = problem.find('\n')
     num = problem[7:num_ind]
-    dates = problem[dates_ind+6:].split(',')
+    if dates_ind != -1:
+        answer = problem[answer_ind + 7:dates_ind - 1]
+        pre_dat = ''.join(problem[dates_ind+5:].split())
+        dates = pre_dat.split(',')
+        if dates == ['']:
+            fin_dates = []
+        else:
+            fin_dates = list(int(d) for d in dates)
+    else:
+        fin_dates = []
+        answer = problem[answer_ind + 7:]
     problem = problem[num_ind+1:answer_ind-1]
-    problems[num] = [problem, answer, list(int(d) for d in dates)]
+    problems[num] = [problem, answer, fin_dates]
     wr.write_problems(problems)
     markup = telegram.InlineKeyboardMarkup(
     wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
-    bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.',reply_markup=markup)
+    bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.', reply_markup=markup)
 
 
 def send_res(bot, updater):
@@ -614,7 +628,9 @@ def repost(bot, updater):
             bot.send_message(chat_id=id, text=mess)
         except telegram.error.Unauthorized:
             pass
-
+    markup = telegram.InlineKeyboardMarkup(
+        wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='admin')], n_cols=1))
+    bot.send_message(chat_id=updater.message.chat.id, text='Успешно!', reply_markup=markup)
 
 
 dispatcher.add_handler(CallbackQueryHandler(query_h))
