@@ -568,8 +568,11 @@ def answer_problem(bot, updater):
             ]
             del(players[str(updater.message.chat.id)][3][problem])
             players[str(updater.message.chat.id)][4].append(problem)
-            if int(pr_2) < len(list(key for key in problems if key[:1] == pr_1)):
-                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = problems[pr_1+str(int(pr_2)+1)][2]
+            if int(pr_2) < len(list(key for key in problems if key[:2] == pr_1)):
+                ran = problems[pr_1+str(int(pr_2)+1)][2]
+                if ran == []:
+                    ran = list(range(10, 28))
+                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = ran
             wr.write_results(players)
         else:
             rep = 'Ответ неверный на задачу {} !'.format(problem)
