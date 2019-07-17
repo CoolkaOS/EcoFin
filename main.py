@@ -32,7 +32,7 @@ updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
 updates = updater
 dispatcher = updater.dispatcher
 FR = telegram.ForceReply()
-
+tz = pytz.timezone("Europe/Moscow")
 
 @run_async
 def confirmation(bot, updater):
@@ -568,7 +568,9 @@ def print_list(bot, updater):
 #             else:
 #                 btnlist.append(telegram.InlineKeyboardButton('К: {}, З: -{}- на даты {}'.format(names[pr[:pr.find('.')]],pr, dates),
 #                                                              callback_data='error'))
-            if datetime.datetime.strptime(players[str(id)][3][pr][0], "%Y-%m-%d %H:%M") < datetime.datetime.now() < datetime.datetime.strptime(players[str(id)][3][pr][1], "%Y-%m-%d %H:%M"):
+            f_d = tz.localize(datetime.datetime.strptime(players[str(id)][3][pr][0], "%Y-%m-%d %H:%M"))
+            s_d = tz.localize(datetime.datetime.strptime(players[str(id)][3][pr][1], "%Y-%m-%d %H:%M"))
+            if f_d < datetime.datetime.now(tz=tz) < s_d:
                 btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+' [Доступно]', callback_data='sh_{}'.format(pr)))
             else:
                 btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'[Недоступно]', callback_data='error'))
@@ -598,9 +600,9 @@ def answer_problem(bot, updater):
             players[str(updater.message.chat.id)][4].append(problem)
             if int(pr_2) < len(list(key for key in problems if key[:2] == pr_1)):
                 players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = problems[pr_1+str(int(pr_2)+1)][2]
-                if datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][0],
-                                              "%Y-%m-%d %H:%M") < datetime.datetime.now() < datetime.datetime.strptime(
-                        players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][1], "%Y-%m-%d %H:%M"):
+                s_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][1], "%Y-%m-%d %H:%M"))
+                f_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][0], "%Y-%m-%d %H:%M"))
+                if f_d < datetime.datetime.now(tz=tz) < s_d:
                     btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача.', callback_data='sh_{}'.format(pr_1+str(int(pr_2)+1))))
                 else:
                     rep += '\nСледующая задача пока не доступна.'
