@@ -34,6 +34,18 @@ def write_problems(problems):
     writer(json.dumps(problems, indent=2, ensure_ascii=False))
 
 
+def read_names():
+    pr = open('problems/names.json', 'r', encoding='utf-8')
+    reader = pr.read()
+    return json.loads(reader)
+
+
+def write_names(names):
+    res = open('problems/names.json', 'w', encoding='utf-8')
+    writer = res.write
+    writer(json.dumps(names, indent=2, ensure_ascii=False))
+
+
 def read_feedback():
     fb = open('feedback.json', 'r', encoding='utf-8')
     reader = fb.read()
