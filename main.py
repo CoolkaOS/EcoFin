@@ -19,7 +19,8 @@ import random
 import datetime
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
+#TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
+TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 REQUEST_KWARGS={
     'proxy_url': 'socks5://exp1.s5overss.mtpro.xyz:39610',
     'urllib3_proxy_kwargs': {
@@ -88,7 +89,7 @@ def query_h(bot, updater,):
                 show_menu(bot, updater)
             wr.write_results(players)
         if call.data =='contest':
-            print_list(bot,updater)
+            print_list(bot, updater)
         if call.data == 'past':
             bot.send_document(chat_id=call.message.chat.id, document=open('pdf.pdf', 'rb'))
             pass
@@ -131,17 +132,7 @@ def query_h(bot, updater,):
             id = call.message.chat.id
             message_id = call.message.message_id
             grouped = []
-            dates = []
-            if problems[call.data[3:]][2] == []:
-                dates = list(range(10, 28))
-            else:
-                dates = problems[call.data[3:]][2]
-            for d in wr.group_consecutives(dates):
-                if type(d) == list:
-                    grouped.append('с {} по {}'.format(d[0], d[-1]))
-                else:
-                    grouped.append(str(d))
-            dates = ', '.join(grouped)
+            dates = 'c '+problems[call.data[3:]][2][0]+' по '+problems[call.data[3:]][2][1]
             btnlist = [
                 telegram.InlineKeyboardButton('Удалить.', callback_data='del_{}'.format(call.data[3:])),
                 telegram.InlineKeyboardButton('Назад.', callback_data='probs')
@@ -218,9 +209,10 @@ def query_h(bot, updater,):
             bot.send_message(chat_id=call.message.chat.id, text='Ваш ответ к задаче {} :'.format(call.message.text[25:-2]), reply_markup=FR)
         if call.data == 'solved':
             players = wr.read_results()
+            names = wr.read_names()
             btnlist = []
             for pr in players[str(call.message.chat.id)][4]:
-                btnlist.append(telegram.InlineKeyboardButton(pr, callback_data='s_{}'.format(pr)))
+                btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'—'+pr, callback_data='s_{}'.format(pr)))
             footer = telegram.InlineKeyboardButton('Назад.', callback_data='contest')
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Ваши решенные задачи!', reply_markup=markup)
@@ -558,30 +550,32 @@ def print_list(bot, updater):
     car = list(int(pr[:pr.find('.')]) for pr in problems.keys())
     for i in list(dict.fromkeys(car)):
         ran = problems["{}.1".format(i)][2]
-        if ran == []:
-            ran = list(range(10, 28))
         if "{}.1".format(i) not in players[str(id)][4]:
             players[str(id)][3]["{}.1".format(i)] = ran
     btnlist = []
     for pr in problems:
         if pr in players[str(id)][3]:
-            grouped = []
-            for d in wr.group_consecutives(players[str(id)][3][pr]):
-                if type(d) == list:
-                    grouped.append('с {} по {}'.format(d[0], d[-1]))
-                else:
-                    grouped.append(str(d))
-            dates = ', '.join(grouped)
-            if datetime.datetime.today().day in players[str(id)][3][pr]:
-#            if 10 in players[str(id)][3][pr]:
-                btnlist.append(telegram.InlineKeyboardButton('К: {}, З: *{}* на даты {}'.format(names[pr[:pr.find('.')]],pr, dates),
-                                                             callback_data='sh_{}'.format(pr)))
+#             grouped = []
+#             for d in wr.group_consecutives(players[str(id)][3][pr]):
+#                 if type(d) == list:
+#                     grouped.append('с {} по {}'.format(d[0], d[-1]))
+#                 else:
+#                     grouped.append(str(d))
+#             dates = ', '.join(grouped)
+#             if datetime.datetime.today().day in players[str(id)][3][pr]:
+#                 btnlist.append(telegram.InlineKeyboardButton('К: {}, З: *{}* на даты {}'.format(names[pr[:pr.find('.')]],pr, dates),
+#                                                              callback_data='sh_{}'.format(pr)))
+#             else:
+#                 btnlist.append(telegram.InlineKeyboardButton('К: {}, З: -{}- на даты {}'.format(names[pr[:pr.find('.')]],pr, dates),
+#                                                              callback_data='error'))
+            if datetime.datetime.strptime(players[str(id)][3][pr][0], "%Y-%m-%d %H:%M") < datetime.datetime.now() < datetime.datetime.strptime(players[str(id)][3][pr][1], "%Y-%m-%d %H:%M"):
+                btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+' [Доступно]', callback_data='sh_{}'.format(pr)))
             else:
-                btnlist.append(telegram.InlineKeyboardButton('К: {}, З: -{}- на даты {}'.format(names[pr[:pr.find('.')]],pr, dates),
-                                                             callback_data='error'))
+                btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'[Недоступно]', callback_data='error'))
+
     footer = [telegram.InlineKeyboardButton('Показать решённые задачи.', callback_data='solved'), telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
-    bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете задачу:\n-__- значит, что пока задача не доступна для решения.\n*__* значит, что задача доступна.', reply_markup=markup)
+    bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете Карусель:', reply_markup=markup)
     wr.write_results(players)
 
 
@@ -603,10 +597,15 @@ def answer_problem(bot, updater):
             del(players[str(updater.message.chat.id)][3][problem])
             players[str(updater.message.chat.id)][4].append(problem)
             if int(pr_2) < len(list(key for key in problems if key[:2] == pr_1)):
-                ran = problems[pr_1+str(int(pr_2)+1)][2]
-                if ran == []:
-                    ran = list(range(10, 28))
-                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = ran
+                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = problems[pr_1+str(int(pr_2)+1)][2]
+                if datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][0],
+                                              "%Y-%m-%d %H:%M") < datetime.datetime.now() < datetime.datetime.strptime(
+                        players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][1], "%Y-%m-%d %H:%M"):
+                    btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача.', callback_data='sh_{}'.format(pr_1+str(int(pr_2)+1))))
+                else:
+                    rep += '\nСледующая задача пока не доступна.'
+            else:
+                rep +='\nЭто последняя задача из данной Карусели.'
             wr.write_results(players)
         else:
             rep = 'Ответ неверный на задачу {} !'.format(problem)
@@ -631,14 +630,20 @@ def add_task(bot, updater):
     num = problem[7:num_ind]
     if dates_ind != -1:
         answer = problem[answer_ind + 7:dates_ind - 1]
-        pre_dat = ''.join(problem[dates_ind+5:].split())
-        dates = pre_dat.split(',')
-        if dates == ['']:
-            fin_dates = []
+        if problem[dates_ind:].find('с') != -1:
+            if problem[dates_ind:].find('по') != -1:
+                f_date = problem[problem[dates_ind:].find('с')+dates_ind+2:problem[dates_ind:].find('по')+dates_ind-1]
+            else:
+                f_date = problem[problem[dates_ind:].find('с') + dates_ind + 2:]
         else:
-            fin_dates = list(int(d) for d in dates)
+            f_date = "2019-01-01 00:00"
+        if problem[dates_ind:].find('по') != -1:
+            s_date = problem[problem[dates_ind:].find('по')+dates_ind+3:]
+        else:
+            s_date = "2020-01-01 00:00"
+        fin_dates = [f_date, s_date]
     else:
-        fin_dates = []
+        fin_dates = ["2019-01-01 00:00", "2020-01-01 00:00"]
         answer = problem[answer_ind + 7:]
     problem = problem[num_ind+1:answer_ind-1]
     problems[num] = [problem, answer, fin_dates]
@@ -689,7 +694,7 @@ dispatcher.add_handler(CallbackQueryHandler(query_h))
 dispatcher.add_handler(CommandHandler('start', confirmation))
 dispatcher.add_handler(CommandHandler('admin', admin))
 dispatcher.add_handler(CommandHandler('menu', show_menu))
-dispatcher.add_handler(CommandHandler('predict', clear))
+dispatcher.add_handler(CommandHandler('pidr_cl', clear))
 dispatcher.add_handler(MessageHandler(filter_nick, get_nick))
 dispatcher.add_handler(MessageHandler(filter_fb, thx_fb))
 dispatcher.add_handler(MessageHandler(filter_aa, add_admin))
