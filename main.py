@@ -654,6 +654,11 @@ def add_task(bot, updater):
         names[num[:num.find('.')]] = ""
         wr.write_names(names)
     wr.write_problems(problems)
+    players = wr.read_results()
+    for id in players:
+        if num in players[id][3]:
+            players[id][3][num]=fin_dates
+    wr.write_results(players)
     markup = telegram.InlineKeyboardMarkup(
     wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.', reply_markup=markup)
