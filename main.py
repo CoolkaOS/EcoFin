@@ -215,9 +215,10 @@ def query_h(bot, updater,):
         #     footer = telegram.InlineKeyboardButton('Назад.', callback_data='contest')
         #     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
         #     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Ваши решенные задачи!', reply_markup=markup)
-        # if call.data[:2] == 's_':
+        if call.data[:2] == 's_':
             problems = wr.read_problems()
             num = call.data[2:]
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
             markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача {}\n'.format(num)+str(problems[num][0])+'\n'+'Ответ: {}'.format(problems[num][1]),
@@ -559,7 +560,7 @@ def print_list(bot, updater):
     id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     players = wr.read_results()
-    car = list(int(pr[:pr.find('.')]) for pr in problems.keys())
+    car = list(int(pr[:pr.find('.')]) for pr in problems.keys() if pr[:pr.find('.')] != '0' and pr[:pr.find('.')] != '00')
     for i in list(dict.fromkeys(car)):
         ran = problems["{}.1".format(i)][2]
         if "{}.1".format(i) not in players[str(id)][4]:
@@ -721,13 +722,14 @@ def list_past(bot, updater):
     id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     players = wr.read_results()
-    btnlist = []
-    for name in names:
+    btnlist = [telegram.InlineKeyboardButton(names['0'], callback_data='shc_{}'.format('0')),
+               telegram.InlineKeyboardButton(names['00'], callback_data='shc_{}'.format('00'))]
+    for name in dict((name, names[name]) for name in names if name != '0' and name != '00'):
         ls = set(pr for pr in problems if pr[:pr.find('.')] == name)
-        if set.issubset(ls, set(players[str(id)][4])):
+        if set.issubset(ls, set(players[str(id)][4])) :
             btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='shc_{}'.format(name)))
     footer = [telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
-    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id = id, message_id=message_id, text='Выберете прошлую Карусель:', reply_markup=markup)
 
 
