@@ -5,9 +5,7 @@ import telegram
 import requests
 import json
 import pytz
-import datetime as dt
 from telegram.ext import Updater
-import logging
 from telegram.ext import CommandHandler, BaseFilter
 from telegram.ext import MessageHandler, Filters, CallbackQueryHandler
 from telegram.ext.dispatcher import run_async
@@ -17,6 +15,7 @@ import time
 import totable
 import random
 import datetime
+import os
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 #TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
@@ -33,6 +32,7 @@ updates = updater
 dispatcher = updater.dispatcher
 FR = telegram.ForceReply()
 tz = pytz.timezone("Europe/Moscow")
+
 
 @run_async
 def confirmation(bot, updater):
@@ -91,8 +91,7 @@ def query_h(bot, updater,):
         if call.data =='contest':
             print_list(bot, updater)
         if call.data == 'past':
-            bot.send_document(chat_id=call.message.chat.id, document=open('pdf.pdf', 'rb'))
-            pass
+            list_past(bot, updater)
         if call.data == 'other':
             feedback(bot, updater)
         if call.data == 'rules':
@@ -207,19 +206,19 @@ def query_h(bot, updater,):
             problems = wr.read_problems()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=problems[call.message.text[25:-2]][0])
             bot.send_message(chat_id=call.message.chat.id, text='Ваш ответ к задаче {} :'.format(call.message.text[25:-2]), reply_markup=FR)
-        if call.data == 'solved':
-            players = wr.read_results()
-            names = wr.read_names()
-            btnlist = []
-            for pr in players[str(call.message.chat.id)][4]:
-                btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'—'+pr, callback_data='s_{}'.format(pr)))
-            footer = telegram.InlineKeyboardButton('Назад.', callback_data='contest')
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Ваши решенные задачи!', reply_markup=markup)
-        if call.data[:2] == 's_':
+        # if call.data == 'solved':
+        #     players = wr.read_results()
+        #     names = wr.read_names()
+        #     btnlist = []
+        #     for pr in players[str(call.message.chat.id)][4]:
+        #         btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'—'+pr, callback_data='s_{}'.format(pr)))
+        #     footer = telegram.InlineKeyboardButton('Назад.', callback_data='contest')
+        #     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
+        #     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Ваши решенные задачи!', reply_markup=markup)
+        # if call.data[:2] == 's_':
             problems = wr.read_problems()
             num = call.data[2:]
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='solved')], n_cols=1))
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача {}\n'.format(num)+str(problems[num][0])+'\n'+'Ответ: {}'.format(problems[num][1]),
                                   reply_markup=markup)
@@ -229,7 +228,6 @@ def query_h(bot, updater,):
                                   text='Вы пока не можете решать эту задачу.',
                                   reply_markup=markup)
         if call.data == 'addtask':
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('probs.', callback_data='solved')], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Читай ниже.')
             bot.send_message(chat_id=call.message.chat.id, text='Отправьте текст задачи и ответ ответом на это сообщение.', reply_markup=FR)
@@ -269,7 +267,21 @@ def query_h(bot, updater,):
                                   text='Выбранная карусель:\n{}'.format(i+'-'+names[i]))
             bot.send_message(chat_id=call.message.chat.id,
                              text='Ответьте на это сообщение, чтобы назвать карусель {}.'.format(i), reply_markup=FR)
-
+        if call.data[:4] == 'shc_':
+            problems = wr.read_problems()
+            car = call.data[4:]
+            btnlist = []
+            for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
+                btnlist.append(telegram.InlineKeyboardButton(pr, callback_data='s_{}'.format(pr)))
+            footer = [telegram.InlineKeyboardButton('Отправить PDF.', callback_data='pdf_{}'.format(car)),
+                      telegram.InlineKeyboardButton('Назад.', callback_data='past')]
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=footer))
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
+        if call.data[:4] == 'pdf_':
+            if '{}.pdf'.format(call.data) in os.listdir():
+                bot.send_document(chat_id=call.message.chat.id, document=open('{}.pdf'.format(call.data), 'rb'))
+            else:
+                bot.send_message(chat_id=call.message.chat.id, text='PDF для данной Карусели не существует.')
 
 
 
@@ -554,7 +566,7 @@ def print_list(bot, updater):
             players[str(id)][3]["{}.1".format(i)] = ran
     btnlist = []
     for pr in problems:
-        if pr in players[str(id)][3]:
+        if pr in players[str(id)][3] and names[pr[:pr.find('.')]] != '':
 #             grouped = []
 #             for d in wr.group_consecutives(players[str(id)][3][pr]):
 #                 if type(d) == list:
@@ -575,7 +587,7 @@ def print_list(bot, updater):
             else:
                 btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'[Недоступно]', callback_data='error'))
 
-    footer = [telegram.InlineKeyboardButton('Показать решённые задачи.', callback_data='solved'), telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
+    footer = [telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете Карусель:', reply_markup=markup)
     wr.write_results(players)
@@ -664,16 +676,19 @@ def add_task(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.', reply_markup=markup)
 
 
+@run_async
 def send_res(bot, updater):
     doc = open('results.json', 'rb')
     bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
 
 
+@run_async
 def send_fb(bot, updater):
     doc = open('feedback.json', 'rb')
     bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
 
 
+@run_async
 def repost(bot, updater):
     mess = updater.message.text
     for id in wr.read_results():
@@ -686,6 +701,7 @@ def repost(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Успешно!', reply_markup=markup)
 
 
+@run_async
 def set_name(bot, updater):
     name = updater.message.text
     names = wr.read_names()
@@ -696,6 +712,24 @@ def set_name(bot, updater):
     markup = telegram.InlineKeyboardMarkup(
         wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='setnames')], n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Успешно!', reply_markup=markup)
+
+
+@run_async
+def list_past(bot, updater):
+    problems = wr.read_problems()
+    names = wr.read_names()
+    id = updater.callback_query.message.chat.id
+    message_id = updater.callback_query.message.message_id
+    players = wr.read_results()
+    btnlist = []
+    for name in names:
+        ls = set(pr for pr in problems if pr[:pr.find('.')] == name)
+        if set.issubset(ls, set(players[str(id)][4])):
+            btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='shc_{}'.format(name)))
+    footer = [telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
+    bot.edit_message_text(chat_id = id, message_id=message_id, text='Выберете прошлую Карусель:', reply_markup=markup)
+
 
 dispatcher.add_handler(CallbackQueryHandler(query_h))
 dispatcher.add_handler(CommandHandler('start', confirmation))
