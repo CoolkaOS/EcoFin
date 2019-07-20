@@ -134,7 +134,7 @@ def query_h(bot, updater,):
             dates = 'c '+problems[call.data[3:]][2][0]+' по '+problems[call.data[3:]][2][1]
             btnlist = [
                 telegram.InlineKeyboardButton('Удалить.', callback_data='del_{}'.format(call.data[3:])),
-                telegram.InlineKeyboardButton('Назад.', callback_data='probs')
+                telegram.InlineKeyboardButton('Назад.', callback_data='sc_{}'.format(call.data[3:call.data.find('.')]))
             ]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
             bot.edit_message_text(chat_id=id, message_id=message_id,
@@ -277,6 +277,15 @@ def query_h(bot, updater,):
             footer = [telegram.InlineKeyboardButton('Отправить PDF.', callback_data='pdf_{}'.format(car)),
                       telegram.InlineKeyboardButton('Назад.', callback_data='past')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=footer))
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
+        if call.data[:3] == 'sc_':
+            problems = wr.read_problems()
+            car = call.data[3:]
+            btnlist = []
+            for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
+                btnlist.append(telegram.InlineKeyboardButton(pr, callback_data='pr_{}'.format(pr)))
+            footer = [telegram.InlineKeyboardButton('Назад.', callback_data='probs')]
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
         if call.data[:4] == 'pdf_':
             if '{}.pdf'.format(call.data) in os.listdir():
@@ -476,6 +485,7 @@ def donate(bot, updater):
                           text='Поддержать проект можно через нашу страничку ВК \n(https://vk.com/economic_carousel) или переводом в Сбребанк Онлайн.', reply_markup=markup)
     bot.send_message(chat_id=id, text='2202 2011 4263 4639')
 
+
 @run_async
 def rest(bot, updater):
     bot.send_message(chat_id=updater.message.chat.id, text='Ауч!')
@@ -521,16 +531,17 @@ def admin(bot, updater):
 @run_async
 def problems_list(bot, updater):
     problems = wr.read_problems()
+    names = wr.read_names()
     btnlist = []
-    for problem in problems:
-        btnlist.append(telegram.InlineKeyboardButton(problem, callback_data='pr_{}'.format(problem)))
+    for name in dict((name, names[name]) for name in names if name != '0' and name != '00'):
+        btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='sc_{}'.format(name)))
     footer = [telegram.InlineKeyboardButton('Добавить задачу.', callback_data='addtask'),
               telegram.InlineKeyboardButton('Назвать карусели.', callback_data='setnames'),
               telegram.InlineKeyboardButton('Назад.', callback_data='admin')]
-    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4  , footer_buttons=footer))
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id=updater.callback_query.message.chat.id,
                           message_id=updater.callback_query.message.message_id,
-                          text='Задачи:', reply_markup=markup)
+                          text='Карусели:', reply_markup=markup)
 
 
 
