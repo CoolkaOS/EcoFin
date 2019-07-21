@@ -273,7 +273,7 @@ def query_h(bot, updater,):
             car = call.data[4:]
             btnlist = []
             for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
-                btnlist.append(telegram.InlineKeyboardButton(pr, callback_data='s_{}'.format(pr)))
+                btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='s_{}'.format(pr)))
             footer = [telegram.InlineKeyboardButton('Отправить PDF.', callback_data='pdf_{}'.format(car)),
                       telegram.InlineKeyboardButton('Назад.', callback_data='past')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=footer))
@@ -283,7 +283,7 @@ def query_h(bot, updater,):
             car = call.data[3:]
             btnlist = []
             for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
-                btnlist.append(telegram.InlineKeyboardButton(pr, callback_data='pr_{}'.format(pr)))
+                btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='pr_{}'.format(pr)))
             footer = [telegram.InlineKeyboardButton('Назад.', callback_data='probs')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
@@ -314,8 +314,8 @@ def print_rules(bot, updater, *version):
 
 Время, которое даётся на решение задач, ограничено временем проведения тура.
 
-Вопросы по условию можно задавать на протяжении всего тура в вк:
-Александр - vk.com/sashashivarov
+Вопросы по условию можно задавать на протяжении всего тура в ВК нашей группы:
+https://vk.com/economic_carousel
 
 Во время тура Вы получаете задание, решаете его и даете только ответ. Независимо от результата (верный ответ или нет), Вы получаете следующее задание. 
 
