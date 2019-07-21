@@ -21,11 +21,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 #TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 REQUEST_KWARGS={
-    'proxy_url': 'socks5://exp1.s5overss.mtpro.xyz:39610',
-    'urllib3_proxy_kwargs': {
-        'username': 'mtpro_xyz',
-        'password': 'mtpro_xyz_bot',
-    }
+    'proxy_url': 'socks5://94.156.129.13:1080'
 }
 updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
 updates = updater
