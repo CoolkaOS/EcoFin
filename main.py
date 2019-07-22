@@ -444,7 +444,7 @@ def feedback(bot, updater):
         telegram.InlineKeyboardButton('Через Google Forms.', url='google.com')
     ]
     footer = telegram.InlineKeyboardButton('Назад.', callback_data='menu')
-    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=3, footer_buttons=[footer]))
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=[footer]))
     bot.edit_message_text(
         chat_id=id, message_id= message_id,
         text='Выберите, как вы хотите оставить отзыв, или хотите поддержать проект?',
