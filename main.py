@@ -330,7 +330,7 @@ def print_rules(bot, updater, *version):
                               reply_markup=markup)
     else:
 
-        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='''ПОЗЖЕ''', reply_markup=markup)
+        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='''Coming soon...''', reply_markup=markup)
 
 
 @run_async
