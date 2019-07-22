@@ -446,7 +446,7 @@ def feedback(bot, updater):
     footer = telegram.InlineKeyboardButton('Назад.', callback_data='menu')
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=[footer]))
     bot.edit_message_text(
-        chat_id=id, message_id= message_id,
+        chat_id=id, message_id=message_id,
         text='Выберите, как вы хотите оставить отзыв, или хотите поддержать проект?',
         reply_markup=markup)
 
