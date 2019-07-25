@@ -20,10 +20,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 #TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
-REQUEST_KWARGS={
-    'proxy_url': 'socks5://94.156.129.13:1080'
-}
-updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
+#REQUEST_KWARGS={'proxy_url': 'socks5://94.156.129.13:1080'}
+#updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
+updater = Updater(token=TOKEN)
 updates = updater
 dispatcher = updater.dispatcher
 FR = telegram.ForceReply()
