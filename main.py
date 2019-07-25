@@ -39,11 +39,11 @@ def confirmation(bot, updater):
                          text='Йо, ты уже в системе. Просто используй команды.')
     else:
         btnlist = [
-            telegram.InlineKeyboardButton('Согласен.', callback_data='agree')
+            telegram.InlineKeyboardButton('Согласен', callback_data='agree')
         ]
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
         bot.send_message(chat_id=updater.message.chat.id,
-                         text='Для начала необходимо согласиться с Согласием на обработку персональный данных.')
+                         text='Для начала необходимо принять с Соглашение на обработку персональный данных.')
         bot.send_message(chat_id=updater.message.chat.id,
                          text='Я даю своё согласие на обработку и публикацию моих персональных данных, таких как: результат участия в Экономической Карусели, никнейм Экономической Карусели, никнейм в Телеграме.',
                          reply_markup=markup)
@@ -58,7 +58,7 @@ def get_nick(bot, updater):
     players[str(id)] = players[str(id)]+[name, {}, []]
     wr.write_results(players)
     btnlist = [
-        telegram.InlineKeyboardButton('Меню.', callback_data='menu')
+        telegram.InlineKeyboardButton('Меню', callback_data='menu')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Привет, {}!'.format(name), reply_markup=markup)
@@ -94,9 +94,9 @@ def query_h(bot, updater,):
             chat_id = call.message.chat.id
             message_id = call.message.message_id
             btnlist = [
-                telegram.InlineKeyboardButton('Общие Правила.', callback_data='general'),
-                telegram.InlineKeyboardButton('Карусель ЛЭШ.', callback_data='school'),
-                telegram.InlineKeyboardButton('Назад.', callback_data='menu')
+                telegram.InlineKeyboardButton('Общие Правила', callback_data='general'),
+                telegram.InlineKeyboardButton('Карусель ЛЭШ', callback_data='school'),
+                telegram.InlineKeyboardButton('Назад', callback_data='menu')
             ]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
             bot.edit_message_text(chat_id=chat_id, message_id=message_id,
@@ -129,8 +129,8 @@ def query_h(bot, updater,):
             grouped = []
             dates = 'c '+problems[call.data[3:]][2][0]+' по '+problems[call.data[3:]][2][1]
             btnlist = [
-                telegram.InlineKeyboardButton('Удалить.', callback_data='del_{}'.format(call.data[3:])),
-                telegram.InlineKeyboardButton('Назад.', callback_data='sc_{}'.format(call.data[3:call.data.find('.')]))
+                telegram.InlineKeyboardButton('Удалить', callback_data='del_{}'.format(call.data[3:])),
+                telegram.InlineKeyboardButton('Назад', callback_data='sc_{}'.format(call.data[3:call.data.find('.')]))
             ]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
             bot.edit_message_text(chat_id=id, message_id=message_id,
@@ -151,7 +151,7 @@ def query_h(bot, updater,):
             btnlist = []
             for problem in problems:
                 btnlist.append(telegram.InlineKeyboardButton(problem, callback_data='ch_pr_{}'.format(problem)))
-            footer = telegram.InlineKeyboardButton('Назад.', callback_data='list')
+            footer = telegram.InlineKeyboardButton('Назад', callback_data='list')
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=[footer]))
             id = call.message.chat.id
             message_id = call.message.message_id
@@ -214,13 +214,13 @@ def query_h(bot, updater,):
         if call.data[:2] == 's_':
             problems = wr.read_problems()
             num = call.data[2:]
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='shc_{}'.format(num[:num.find('.')]))], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача {}\n'.format(num)+str(problems[num][0])+'\n'+'Ответ: {}'.format(problems[num][1]),
                                   reply_markup=markup)
         if call.data == 'error':
-            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='contest')], n_cols=1))
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='contest')], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Вы пока не можете решать эту задачу.',
                                   reply_markup=markup)
@@ -238,7 +238,7 @@ def query_h(bot, updater,):
                 del(names[problem[:problem.find('.')]])
                 wr.write_names(names)
             markup = telegram.InlineKeyboardMarkup(
-                wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
+                wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='probs')], n_cols=1))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача успешно удалена.',
                                   reply_markup=markup)
@@ -254,7 +254,7 @@ def query_h(bot, updater,):
             btnlist = []
             for i in names:
                 btnlist.append(telegram.InlineKeyboardButton(i+'-'+names[i], callback_data='set_name_{}'.format(i)))
-            footer = telegram.InlineKeyboardButton('Назад.', callback_data='probs')
+            footer = telegram.InlineKeyboardButton('Назад', callback_data='probs')
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите карусель.', reply_markup=markup)
         if call.data[:9] == 'set_name_':
@@ -271,7 +271,7 @@ def query_h(bot, updater,):
             for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
                 btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='s_{}'.format(pr)))
             footer = [telegram.InlineKeyboardButton('Отправить PDF.', callback_data='pdf_{}'.format(car)),
-                      telegram.InlineKeyboardButton('Назад.', callback_data='past')]
+                      telegram.InlineKeyboardButton('Назад', callback_data='past')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=footer))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
         if call.data[:3] == 'sc_':
@@ -280,7 +280,7 @@ def query_h(bot, updater,):
             btnlist = []
             for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
                 btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='pr_{}'.format(pr)))
-            footer = [telegram.InlineKeyboardButton('Назад.', callback_data='probs')]
+            footer = [telegram.InlineKeyboardButton('Назад', callback_data='probs')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
         if call.data[:4] == 'pdf_':
@@ -290,20 +290,19 @@ def query_h(bot, updater,):
                 bot.send_message(chat_id=call.message.chat.id, text='PDF для данной Карусели не существует.')
 
 
-
 @run_async
 def print_rules(bot, updater, *version):
     chat_id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     btnlist = [
-        telegram.InlineKeyboardButton('Общие Правила.', callback_data='general'),
-        telegram.InlineKeyboardButton('Карусель ЛЭШ.', callback_data='school'),
-        telegram.InlineKeyboardButton('Назад.', callback_data='menu')
+        telegram.InlineKeyboardButton('Общие Правила', callback_data='general'),
+        telegram.InlineKeyboardButton('Карусель ЛЭШ', callback_data='school'),
+        telegram.InlineKeyboardButton('Назад', callback_data='menu')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     if version[0] == 0:
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='''*Как сдавать ответ:*
-Во время тура необходимо ответить боту на сообщение вида:\n\"Ваш ответ к задаче # :\"\n*сообщини    ем с только ответом на задачу*, которым будет являться десятичное число. *Числа записываются в виде десятичной дроби с математическим округлением до двух знаков после запятой, через точку*.
+Во время тура необходимо ответить боту на сообщение вида:\n\"Ваш ответ к задаче # :\"\n*сообщиниPWL17223538ем с только ответом на задачу*, которым будет являться десятичное число. *Числа записываются в виде десятичной дроби с математическим округлением до двух знаков после запятой, через точку*.
 
 *Ход тура и подведение его итогов:*
 
@@ -339,8 +338,8 @@ def show_menu(bot, updater):
     btnlist = [
         telegram.InlineKeyboardButton('Начать Контест!', callback_data='contest'),
         telegram.InlineKeyboardButton('Задания прошлых Каруселей', callback_data='past'),
-        telegram.InlineKeyboardButton('Правила.', callback_data='rules'),
-        telegram.InlineKeyboardButton('Поддержать проект/Оставить отзыв.', callback_data='other')
+        telegram.InlineKeyboardButton('Правила', callback_data='rules'),
+        telegram.InlineKeyboardButton('Поддержать проект/Оставить отзыв', callback_data='other')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     if 'callback_query' in str(updater):
@@ -349,7 +348,7 @@ def show_menu(bot, updater):
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Меню:', reply_markup=markup)
     else:
         chat_id = updater.message.chat.id
-        bot.send_message(chat_id=chat_id, text='Меню.', reply_markup=markup)
+        bot.send_message(chat_id=chat_id, text='Меню', reply_markup=markup)
 
 
 @run_async
@@ -439,11 +438,11 @@ def feedback(bot, updater):
     id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     btnlist = [
-        telegram.InlineKeyboardButton('Поддержать проект.', callback_data='donate'),
-        telegram.InlineKeyboardButton('Через Бота.', callback_data='fb'),
-        telegram.InlineKeyboardButton('Через Google Forms.', url='google.com')
+        telegram.InlineKeyboardButton('Поддержать проект', callback_data='donate'),
+        telegram.InlineKeyboardButton('Через бота', callback_data='fb'),
+        telegram.InlineKeyboardButton('Через Google Forms', url='google.com')
     ]
-    footer = telegram.InlineKeyboardButton('Назад.', callback_data='menu')
+    footer = telegram.InlineKeyboardButton('Назад', callback_data='menu')
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=[footer]))
     bot.edit_message_text(
         chat_id=id, message_id=message_id,
@@ -470,18 +469,18 @@ def donate(bot, updater):
     id = updater.callback_query.message.chat.id
     message_id = updater.callback_query.message.message_id
     btnlist = [
-        telegram.InlineKeyboardButton('Назад.', callback_data='other')
+        telegram.InlineKeyboardButton('Назад', callback_data='other')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     bot.edit_message_text(chat_id=id,
                           message_id=message_id,
-                          text='Поддержать проект можно через нашу страничку ВК \n(https://vk.com/economic_carousel) или переводом в Сбребанк Онлайн.', reply_markup=markup)
+                          text='Поддержать проект можно через нашу страничку ВК \n(https://vk.com/economic_carousel) или переводом в Сбербанк Онлайн.', reply_markup=markup)
     bot.send_message(chat_id=id, text='2202 2011 4263 4639')
 
 
 @run_async
 def rest(bot, updater):
-    bot.send_message(chat_id=updater.message.chat.id, text='Ауч!')
+    bot.send_message(chat_id=updater.message.chat.id, text='Вы написали боту просто так. Либо вам нужно было ответить на сообщение, либо пользуйтесь меню.')
 
 
 @run_async
@@ -497,12 +496,12 @@ def clear(bot, updater):
 def admin(bot, updater):
     players = wr.read_results()
     btnlist = [
-        telegram.InlineKeyboardButton('Показать список участников.', callback_data='list'),
-        telegram.InlineKeyboardButton('Показать задачи.', callback_data='probs'),
-        telegram.InlineKeyboardButton('Добавить админа.', callback_data='addadmin'),
-        telegram.InlineKeyboardButton('Отправить результаты.', callback_data='send_res'),
-        telegram.InlineKeyboardButton('Отправить отзывы.', callback_data='send_fb'),
-        telegram.InlineKeyboardButton('Отправить всем сообщение через бота.', callback_data='repost')
+        telegram.InlineKeyboardButton('Показать список участников', callback_data='list'),
+        telegram.InlineKeyboardButton('Показать задачи', callback_data='probs'),
+        telegram.InlineKeyboardButton('Добавить админа', callback_data='addadmin'),
+        telegram.InlineKeyboardButton('Отправить результаты', callback_data='send_res'),
+        telegram.InlineKeyboardButton('Отправить отзывы', callback_data='send_fb'),
+        telegram.InlineKeyboardButton('Отправить всем сообщение через бота', callback_data='repost')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     if 'callback_query' in str(updater):
@@ -528,9 +527,9 @@ def problems_list(bot, updater):
     btnlist = []
     for name in dict((name, names[name]) for name in names if name != '0' and name != '00'):
         btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='sc_{}'.format(name)))
-    footer = [telegram.InlineKeyboardButton('Добавить задачу.', callback_data='addtask'),
-              telegram.InlineKeyboardButton('Назвать карусели.', callback_data='setnames'),
-              telegram.InlineKeyboardButton('Назад.', callback_data='admin')]
+    footer = [telegram.InlineKeyboardButton('Добавить задачу', callback_data='addtask'),
+              telegram.InlineKeyboardButton('Назвать карусели', callback_data='setnames'),
+              telegram.InlineKeyboardButton('Назад', callback_data='admin')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id=updater.callback_query.message.chat.id,
                           message_id=updater.callback_query.message.message_id,
@@ -544,7 +543,7 @@ def part_list(bot, updater):
     btnlist = []
     for id in players:
         btnlist.append(telegram.InlineKeyboardButton(players[id][2], callback_data='add_{}'.format(updater.callback_query.message.chat.id)))
-    footer = telegram.InlineKeyboardButton('Назад.', callback_data='admin')
+    footer = telegram.InlineKeyboardButton('Назад', callback_data='admin')
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
     bot.edit_message_text(chat_id=updater.callback_query.message.chat.id, message_id=updater.callback_query.message.message_id, text='Список участников.', reply_markup=markup)
 
@@ -592,7 +591,7 @@ def print_list(bot, updater):
             else:
                 btnlist.append(telegram.InlineKeyboardButton(names[pr[:pr.find('.')]]+'[Недоступно]', callback_data='error'))
 
-    footer = [telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
+    footer = [telegram.InlineKeyboardButton('Назад', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете Карусель:', reply_markup=markup)
     wr.write_results(players)
@@ -620,7 +619,7 @@ def answer_problem(bot, updater):
                 s_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][1], "%Y-%m-%d %H:%M"))
                 f_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][0], "%Y-%m-%d %H:%M"))
                 if f_d < datetime.datetime.now(tz=tz) < s_d:
-                    btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача.', callback_data='sh_{}'.format(pr_1+str(int(pr_2)+1))))
+                    btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача', callback_data='sh_{}'.format(pr_1+str(int(pr_2)+1))))
                 else:
                     rep += '\nСледующая задача пока не доступна.'
             else:
@@ -629,7 +628,7 @@ def answer_problem(bot, updater):
         else:
             rep = 'Ответ неверный на задачу {} !'.format(problem)
             btnlist =[
-                telegram.InlineKeyboardButton('Ещё раз.', callback_data='again'),
+                telegram.InlineKeyboardButton('Ещё раз', callback_data='again'),
                 telegram.InlineKeyboardButton('Назад', callback_data='contest')
             ]
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
@@ -677,7 +676,7 @@ def add_task(bot, updater):
             players[id][3][num]=fin_dates
     wr.write_results(players)
     markup = telegram.InlineKeyboardMarkup(
-    wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='probs')], n_cols=1))
+    wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='probs')], n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Задача успешно добавлена.', reply_markup=markup)
 
 
@@ -702,7 +701,7 @@ def repost(bot, updater):
         except telegram.error.Unauthorized:
             pass
     markup = telegram.InlineKeyboardMarkup(
-        wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='admin')], n_cols=1))
+        wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='admin')], n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Успешно!', reply_markup=markup)
 
 
@@ -715,7 +714,7 @@ def set_name(bot, updater):
     names[i] = name
     wr.write_names(names)
     markup = telegram.InlineKeyboardMarkup(
-        wr.build_menu([telegram.InlineKeyboardButton('Назад.', callback_data='setnames')], n_cols=1))
+        wr.build_menu([telegram.InlineKeyboardButton('Назад', callback_data='setnames')], n_cols=1))
     bot.send_message(chat_id=updater.message.chat.id, text='Успешно!', reply_markup=markup)
 
 
@@ -732,7 +731,7 @@ def list_past(bot, updater):
         ls = set(pr for pr in problems if pr[:pr.find('.')] == name)
         if set.issubset(ls, set(players[str(id)][4])) :
             btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='shc_{}'.format(name)))
-    footer = [telegram.InlineKeyboardButton('Назад.', callback_data='menu')]
+    footer = [telegram.InlineKeyboardButton('Назад', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
     bot.edit_message_text(chat_id = id, message_id=message_id, text='Выберете прошлую Карусель:', reply_markup=markup)
 
