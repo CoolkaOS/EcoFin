@@ -439,7 +439,7 @@ def feedback(bot, updater):
     btnlist = [
         telegram.InlineKeyboardButton('Поддержать проект', callback_data='donate'),
         telegram.InlineKeyboardButton('Через бота', callback_data='fb'),
-        telegram.InlineKeyboardButton('Через Google Forms', url='https://forms.gle/Ejd4Q6gDchvjWidZ8')
+        telegram.InlineKeyboardButton('Через Google Forms', url='https://forms.gle/UyPgMpSs31WPcPwQ7')
     ]
     footer = telegram.InlineKeyboardButton('Назад', callback_data='menu')
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=[footer]))
