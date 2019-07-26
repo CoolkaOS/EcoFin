@@ -473,7 +473,7 @@ def donate(bot, updater):
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     bot.edit_message_text(chat_id=id,
                           message_id=message_id,
-                          text='Поддержать проект можно через нашу страничку ВК \n(https://vk.com/economic_carousel) или переводом в Сбербанк Онлайн.', reply_markup=markup)
+                          text='Поддержать проект можно через нашу страничку ВК \n(https://vk.com/economic.carousel) или переводом в Сбербанк Онлайн.', reply_markup=markup)
     bot.send_message(chat_id=id, text='2202 2011 4263 4639')
 
 
