@@ -42,9 +42,9 @@ def confirmation(bot, updater):
         ]
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
         bot.send_message(chat_id=updater.message.chat.id,
-                         text='Для начала необходимо принять с Соглашение на обработку персональный данных.')
+                         text='Для начала необходимо принять Соглашение на обработку персональный данных.')
         bot.send_message(chat_id=updater.message.chat.id,
-                         text='Я даю своё согласие на обработку и публикацию моих персональных данных, таких как: результат участия в Экономической Карусели, никнейм Экономической Карусели, никнейм в Телеграме.',
+                         text='Я даю своё согласие на обработку и публикацию моих персональных данных, таких как: результат участия в Экономической карусели, никнейм в Экономической карусели, никнейм в Телеграме.',
                          reply_markup=markup)
 
 
@@ -54,7 +54,7 @@ def get_nick(bot, updater):
     players = wr.read_results()
     id = updater.message.chat.id
     name = updater.message.text
-    players[str(id)] = players[str(id)]+[name, {}, []]
+    players[str(id)] = players[str(id)]+[name, {}, {}]
     wr.write_results(players)
     btnlist = [
         telegram.InlineKeyboardButton('Меню', callback_data='menu')
@@ -77,7 +77,7 @@ def query_h(bot, updater,):
             if str(id) not in players:
                 players[str(id)] = [id, '@' + str(call.message.chat.username)]
                 bot.send_message(chat_id=id,
-                                 text='А теперь давайте познакомимся. Под каким никнеймом отображать вас в таблице результатов?',
+                                 text='А теперь давайте познакомимся. Под каким никнеймом отображать Вас в таблице результатов?',
                                  reply_markup=FR)
             else:
                 bot.send_message(chat_id=id, text='Ты уже в системе, вот меню!')
@@ -255,7 +255,7 @@ def query_h(bot, updater,):
                 btnlist.append(telegram.InlineKeyboardButton(i+'-'+names[i], callback_data='set_name_{}'.format(i)))
             footer = telegram.InlineKeyboardButton('Назад', callback_data='probs')
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=[footer]))
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите карусель.', reply_markup=markup)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите карусель:', reply_markup=markup)
         if call.data[:9] == 'set_name_':
             i = call.data[9:]
             names = wr.read_names()
@@ -269,10 +269,10 @@ def query_h(bot, updater,):
             btnlist = []
             for pr in list(pr for pr in problems if pr[:pr.find('.')] == car):
                 btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='s_{}'.format(pr)))
-            footer = [telegram.InlineKeyboardButton('Отправить PDF.', callback_data='pdf_{}'.format(car)),
+            footer = [telegram.InlineKeyboardButton('Отправить PDF', callback_data='pdf_{}'.format(car)),
                       telegram.InlineKeyboardButton('Назад', callback_data='past')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2, footer_buttons=footer))
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу:', reply_markup=markup)
         if call.data[:3] == 'sc_':
             problems = wr.read_problems()
             car = call.data[3:]
@@ -281,7 +281,7 @@ def query_h(bot, updater,):
                 btnlist.append(telegram.InlineKeyboardButton(pr[pr.find('.')+1:], callback_data='pr_{}'.format(pr)))
             footer = [telegram.InlineKeyboardButton('Назад', callback_data='probs')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=4, footer_buttons=footer))
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу.', reply_markup=markup)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите задачу:', reply_markup=markup)
         if call.data[:4] == 'pdf_':
             if '{}.pdf'.format(call.data) in os.listdir():
                 bot.send_document(chat_id=call.message.chat.id, document=open('{}.pdf'.format(call.data), 'rb'))
@@ -301,7 +301,7 @@ def print_rules(bot, updater, *version):
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
     if version[0] == 0:
         bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='''*Как сдавать ответ:*
-Во время тура необходимо ответить боту на сообщение вида:\n\"Ваш ответ к задаче # :\"\n*сообщиниPWL17223538ем с только ответом на задачу*, которым будет являться десятичное число. *Числа записываются в виде десятичной дроби с математическим округлением до двух знаков после запятой, через точку*.
+Во время тура необходимо ответить боту на сообщение вида:\n\"Ваш ответ к задаче # :\"\n*сообщинием с только ответом на задачу*, которым будет являться десятичное число. *Числа записываются в виде десятичной дроби с математическим округлением до двух знаков после запятой, через точку*.
 
 *Ход тура и подведение его итогов:*
 
@@ -366,7 +366,7 @@ def print_problem(bot, updater, num):
 class FilterNick(BaseFilter):
     def filter(self, message):
         try:
-            return 'А теперь давайте познакомимся. Под каким никнеймом отображать вас в таблице результатов?' == message.reply_to_message.text
+            return 'А теперь давайте познакомимся. Под каким никнеймом отображать Вас в таблице результатов?' == message.reply_to_message.text
         except AttributeError:
             return False
 filter_nick = FilterNick()
@@ -592,7 +592,7 @@ def print_list(bot, updater):
 
     footer = [telegram.InlineKeyboardButton('Назад', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
-    bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберете Карусель:', reply_markup=markup)
+    bot.edit_message_text(chat_id=id, message_id=message_id, text='Выберите Карусель:', reply_markup=markup)
     wr.write_results(players)
 
 
@@ -601,37 +601,49 @@ def answer_problem(bot, updater):
     problems = wr.read_problems()
     answer = updater.message.text
     problem = updater.message.reply_to_message.text[19:-2]
-    pr_1 = problem[:2]
-    pr_2 = problem[2:]
+    pr_1 = problem[:problem.find('.')+1]
+    pr_2 = problem[problem.find('.')+1:]
     try:
         float(answer)
         players = wr.read_results()
+        btnlist = [
+            telegram.InlineKeyboardButton('Назад', callback_data='contest')
+        ]
+        del (players[str(updater.message.chat.id)][3][problem])
         if answer == problems[problem][1]:
             rep = 'Ответ верный!'
-            btnlist = [
-                telegram.InlineKeyboardButton('Назад', callback_data='contest')
-            ]
-            del(players[str(updater.message.chat.id)][3][problem])
-            players[str(updater.message.chat.id)][4].append(problem)
-            if int(pr_2) < len(list(key for key in problems if key[:2] == pr_1)):
-                players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)] = problems[pr_1+str(int(pr_2)+1)][2]
-                s_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][1], "%Y-%m-%d %H:%M"))
-                f_d = tz.localize(datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1+str(int(pr_2)+1)][0], "%Y-%m-%d %H:%M"))
-                if f_d < datetime.datetime.now(tz=tz) < s_d:
-                    btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача', callback_data='sh_{}'.format(pr_1+str(int(pr_2)+1))))
-                else:
-                    rep += '\nСледующая задача пока не доступна.'
+            if pr_2 == '1':
+                players[str(updater.message.chat.id)][4][problem] = 3
+            elif players[str(updater.message.chat.id)][4][pr_1 + str(int(pr_2) - 1)] == 0:
+                players[str(updater.message.chat.id)][4][problem] = 3
             else:
-                rep +='\nЭто последняя задача из данной Карусели.'
-            wr.write_results(players)
+                players[str(updater.message.chat.id)][4][problem] = players[str(updater.message.chat.id)][4][pr_1 + str(int(pr_2) - 1)]+1
         else:
-            rep = 'Ответ неверный на задачу {} !'.format(problem)
-            btnlist =[
-                telegram.InlineKeyboardButton('Ещё раз', callback_data='again'),
-                telegram.InlineKeyboardButton('Назад', callback_data='contest')
-            ]
+            players[str(updater.message.chat.id)][4][problem] = 0
+            wr.write_results(players)
+            rep = 'Ответ неверный!'
+        if int(pr_2) < len(list(key for key in problems if key[:2] == pr_1)):
+            players[str(updater.message.chat.id)][3][pr_1 + str(int(pr_2) + 1)] = problems[pr_1 + str(int(pr_2) + 1)][2]
+            s_d = tz.localize(
+                datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1 + str(int(pr_2) + 1)][1],
+                                           "%Y-%m-%d %H:%M"))
+            f_d = tz.localize(
+                datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1 + str(int(pr_2) + 1)][0],
+                                           "%Y-%m-%d %H:%M"))
+            if f_d < datetime.datetime.now(tz=tz) < s_d:
+                btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача', callback_data='sh_{}'.format(
+                    pr_1 + str(int(pr_2) + 1))))
+            else:
+                rep += '\nСледующая задача пока не доступна.'
+        else:
+            sum = 0
+            for num in players[str(updater.message.chat.id)][4]:
+                sum+=players[str(updater.message.chat.id)][4][num]
+            rep += '\nЭто последняя задача из данной Карусели.\nВаш результат: {} б.'.format(sum)
+
         markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
         bot.send_message(chat_id=updater.message.chat.id, text=rep, reply_markup=markup)
+        wr.write_results(players)
     except ValueError:
         bot.send_message(chat_id=updater.message.chat.id, text='Неправильный формат ответа!')
         bot.send_message(chat_id=updater.message.chat.id, text=updater.message.reply_to_message.text)
@@ -728,11 +740,11 @@ def list_past(bot, updater):
                telegram.InlineKeyboardButton(names['00'], callback_data='shc_{}'.format('00'))]
     for name in dict((name, names[name]) for name in names if name != '0' and name != '00'):
         ls = set(pr for pr in problems if pr[:pr.find('.')] == name)
-        if set.issubset(ls, set(players[str(id)][4])) :
+        if set.issubset(ls, set(players[str(id)][4])):
             btnlist.append(telegram.InlineKeyboardButton(names[name], callback_data='shc_{}'.format(name)))
     footer = [telegram.InlineKeyboardButton('Назад', callback_data='menu')]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1, footer_buttons=footer))
-    bot.edit_message_text(chat_id = id, message_id=message_id, text='Выберете прошлую Карусель:', reply_markup=markup)
+    bot.edit_message_text(chat_id = id, message_id=message_id, text='Выберите прошлую Карусель:', reply_markup=markup)
 
 
 dispatcher.add_handler(CallbackQueryHandler(query_h))
