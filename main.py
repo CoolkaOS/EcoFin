@@ -646,7 +646,7 @@ def answer_problem(bot, updater):
         wr.write_results(players)
     except ValueError:
         bot.send_message(chat_id=updater.message.chat.id, text='Неправильный формат ответа!')
-        bot.send_message(chat_id=updater.message.chat.id, text=updater.message.reply_to_message.text)
+        bot.send_message(chat_id=updater.message.chat.id, text=updater.message.reply_to_message.text, reply_markup=FR)
 
 
 @run_async
