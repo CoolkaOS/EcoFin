@@ -22,38 +22,17 @@ def totable():
         i += 1
     index = 0
     for id in ids:
-        for j in range(0, len(results[id][2])):
-            a = ws.cell(
-                row=1 + index * 3,
-                column=2 + 14 * j,
-                value=results[id][2][j][0])
-            a = ws.merge_cells(
-                start_row=1 + index * 3,
-                start_column=2 + 14 * j,
-                end_row=1 + index * 3,
-                end_column=15 + 14 * j)
-            cells = [{}, {}]
-            for i in range(1, 14):
-                cells[0][i] = ws.cell(row=2 + index * 3,
-                                      column=1 + int(i) + j * 14,
-                                      value=results[id][2][j][1][str(i)][0])
-            for i in range(1, 14):
-                try:
-                    cells[1][i] = ws.cell(row=3 + index * 3,
-                                          column=1 + int(i) + j * 14,
-                                          value=results[id][2][j][1][str(i)][1])
-                except IndexError:
-                    cells[1][i] = ws.cell(
-                        row=3 + index * 3, column=1 + int(i) + j * 14, value=0)
-            ws.cell(
-                row=2 + index * 3,
-                column=15 + j * 14,
-                value=results[id][2][j][2])
-            ws.cell(
-                row=3 + index * 3,
-                column=15 + j * 14,
-                value=results[id][2][j][3])
-
+        le = len(results[id][4])
+        for pr in results[id][4].items():
+            ws.cell(row=2 + index * 3,
+                    column=3 + list(results[id][4].items()).index(pr),
+                    value=pr[0])
+            ws.cell(row=3 + index * 3,
+                    column=3 +list(results[id][4].items()).index(pr),
+                    value=pr[1])
+        ws.cell(row=3 + index * 3,
+                column=2,
+                value=sum(results[id][4][pr] for pr in results[id][4]))
         index += 1
 
     wb.save('res.xlsx')

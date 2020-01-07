@@ -241,8 +241,18 @@ def query_h(bot, updater,):
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача успешно удалена.',
                                   reply_markup=markup)
-        if call.data == 'send_res':
-            send_res(bot, updater)
+        if call.data == 'send_resilts':
+            btnlist = [telegram.InlineKeyboardButton('JSON', callback_data='send_json'.format(car)),
+                      telegram.InlineKeyboardButton('XLXS', callback_data='send_xlsx')]
+            markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2))
+            bot.send_message(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите резы:', reply_markup=markup)
+        if call.data == 'send_json':
+            doc = open('results.json', 'rb')
+            bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
+        if call.data == 'send_xlsx':
+            totable.totable()
+            doc = open('res.xlsx', 'rb')
+            bot.send_document(chat_id=updater.callback_query.message.chat.id, document=doc)
         if call.data == 'send_fb':
             send_fb(bot, updater)
         if call.data == 'repost':
@@ -498,7 +508,7 @@ def admin(bot, updater):
         telegram.InlineKeyboardButton('Показать список участников', callback_data='list'),
         telegram.InlineKeyboardButton('Показать задачи', callback_data='probs'),
         telegram.InlineKeyboardButton('Добавить админа', callback_data='addadmin'),
-        telegram.InlineKeyboardButton('Отправить результаты', callback_data='send_res'),
+        telegram.InlineKeyboardButton('Отправить результаты', callback_data='send_results'),
         telegram.InlineKeyboardButton('Отправить отзывы', callback_data='send_fb'),
         telegram.InlineKeyboardButton('Отправить всем сообщение через бота', callback_data='repost')
     ]
