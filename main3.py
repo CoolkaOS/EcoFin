@@ -18,8 +18,8 @@ import datetime
 import os
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-#TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
-TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
+TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
+#TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 REQUEST_KWARGS={'proxy_url': 'socks5://orbtl.s5.opennetwork.cc:999', 'urllib3_proxy_kwargs': {'username': '298465764', 'password': '56tsGvzP'}}
 updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
 #updater = Updater(token=TOKEN)
@@ -56,7 +56,7 @@ def get_nick(bot, updater):
     players[str(id)] = [id, '@' + str(updater.message.chat.username)]
     name = updater.message.text
     part_list = wr.read_part()
-    if name not in part_list:
+    if name in part_list:
         players[str(id)] = players[str(id)]+[name, {}, {}]
         wr.write_results(players)
         btnlist = [

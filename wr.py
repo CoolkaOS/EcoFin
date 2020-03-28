@@ -81,6 +81,11 @@ def write_admins(admins):
     writer = fb.write
     writer(json.dumps(admins, ensure_ascii=False))
 
+def read_part():
+    fb = open('part.json', 'r', encoding='utf-8')
+    reader = fb.read()
+    return json.loads(reader)
+
 
 def group_consecutives(vals, step=1):
     run = []
