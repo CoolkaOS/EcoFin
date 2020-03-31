@@ -356,13 +356,24 @@ def show_menu(bot, updater):
         telegram.InlineKeyboardButton('Поддержать проект/Оставить отзыв', callback_data='other')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
+    results = wr.read_results()
+
     if 'callback_query' in str(updater):
         chat_id = updater.callback_query.message.chat.id
-        message_id = updater.callback_query.message.message_id
-        bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Меню:', reply_markup=markup)
+        if chat_id in results:
+            message_id = updater.callback_query.message.message_id
+            bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Меню:', reply_markup=markup)
+        else:
+            chat_id = updater.message.chat.id
+            bot.send_message(chat_id=chat_id, text='Вы не нажали старт!')
     else:
         chat_id = updater.message.chat.id
-        bot.send_message(chat_id=chat_id, text='Меню', reply_markup=markup)
+        if chat_id in results:
+            bot.send_message(chat_id=chat_id, text='Меню', reply_markup=markup)
+        else:
+            chat_id = updater.message.chat.id
+            bot.send_message(chat_id=chat_id, text='Вы не нажали старт!')
+
 
 
 @run_async
@@ -567,7 +578,11 @@ def add_admin(bot, updater):
     admins = wr.read_admins()
     admins.append(updater.message.text)
     wr.write_admins(admins)
-    bot.send_message(chat_id=updater.message.chat.id, text='Админ {} добавлен!'.format(updater.message.text))
+    btnlist = [
+        telegram.InlineKeyboardButton('Меню админа.', callback_data='admin')
+    ]
+    markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
+    bot.send_message(chat_id=updater.message.chat.id, text='Админ {} добавлен!'.format(updater.message.text), reply_markup=markup)
 
 
 @run_async
