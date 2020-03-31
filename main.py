@@ -20,8 +20,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 #TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
-REQUEST_KWARGS={'proxy_url': 'socks5://orbtl.s5.opennetwork.cc:999', 'urllib3_proxy_kwargs': {'username': '298465764', 'password': '56tsGvzP'}}
-updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS)
+REQUEST_KWARGS = {'proxy_url': 'socks5://orbtl.s5.opennetwork.cc:999', 'urllib3_proxy_kwargs': {'username': '298465764', 'password': '56tsGvzP'}}
+updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS, use_context=False)
 #updater = Updater(token=TOKEN)
 updates = updater
 dispatcher = updater.dispatcher
@@ -356,22 +356,19 @@ def show_menu(bot, updater):
         telegram.InlineKeyboardButton('Поддержать проект/Оставить отзыв', callback_data='other')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
-    results = wr.read_results()
-
+    players = wr.read_results()
     if 'callback_query' in str(updater):
         chat_id = updater.callback_query.message.chat.id
-        if chat_id in results:
+        if str(chat_id) in players.keys():
             message_id = updater.callback_query.message.message_id
             bot.edit_message_text(chat_id=chat_id, message_id=message_id, text='Меню:', reply_markup=markup)
         else:
-            chat_id = updater.message.chat.id
             bot.send_message(chat_id=chat_id, text='Вы не нажали старт!')
     else:
         chat_id = updater.message.chat.id
-        if chat_id in results:
+        if str(chat_id) in players.keys():
             bot.send_message(chat_id=chat_id, text='Меню', reply_markup=markup)
         else:
-            chat_id = updater.message.chat.id
             bot.send_message(chat_id=chat_id, text='Вы не нажали старт!')
 
 
