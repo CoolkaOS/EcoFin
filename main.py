@@ -658,8 +658,8 @@ def answer_problem(bot, updater):
                 datetime.datetime.strptime(players[str(updater.message.chat.id)][3][pr_1 + str(int(pr_2) + 1)][0],
                                            "%Y-%m-%d %H:%M"))
             if f_d < datetime.datetime.now(tz=tz) < s_d:
-                btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача', callback_data='sh_{}'.format(
-                    pr_1 + str(int(pr_2) + 1))))
+                pr_num = pr_1 + str(int(pr_2) + 1)
+                btnlist.insert(0, telegram.InlineKeyboardButton('Следующая задача {}'.format(pr_num), callback_data='sh_{}'.format(pr_num)))
             else:
                 rep += '\nСледующая задача пока не доступна.'
         else:
@@ -779,12 +779,12 @@ dispatcher.add_handler(CommandHandler('start', confirmation))
 dispatcher.add_handler(CommandHandler('admin', admin))
 dispatcher.add_handler(CommandHandler('menu', show_menu))
 dispatcher.add_handler(CommandHandler('pidr_cl', clear))
+dispatcher.add_handler(MessageHandler(filter_ans, answer_problem))
 dispatcher.add_handler(MessageHandler(filter_nick, get_nick))
 dispatcher.add_handler(MessageHandler(filter_fb, thx_fb))
 dispatcher.add_handler(MessageHandler(filter_aa, add_admin))
 dispatcher.add_handler(MessageHandler(filter_at, add_task))
-dispatcher.add_handler(MessageHandler(filter_ans, answer_problem))
 dispatcher.add_handler(MessageHandler(filter_rep, repost))
 dispatcher.add_handler(MessageHandler(filter_name, set_name))
-dispatcher.add_handler(MessageHandler(Filters.chat, rest))
+dispatcher.add_handler(MessageHandler(Filters.update, rest))
 updater.start_polling()
