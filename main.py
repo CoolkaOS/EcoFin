@@ -99,7 +99,6 @@ def query_h(bot, updater,):
             message_id = call.message.message_id
             btnlist = [
                 telegram.InlineKeyboardButton('Общие Правила', callback_data='general'),
-                telegram.InlineKeyboardButton('Карусель ЛЭШ', callback_data='school'),
                 telegram.InlineKeyboardButton('Назад', callback_data='menu')
             ]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
@@ -107,8 +106,6 @@ def query_h(bot, updater,):
                              text='Правила:', reply_markup=markup)
         if call.data == 'general':
             print_rules(bot, updater, 0)
-        if call.data == 'school':
-            print_rules(bot, updater, 1)
         if call.data == 'menu':
             show_menu(bot, updater)
         if call.data == 'fb':
@@ -310,7 +307,6 @@ def print_rules(bot, updater, *version):
     message_id = updater.callback_query.message.message_id
     btnlist = [
         telegram.InlineKeyboardButton('Общие Правила', callback_data='general'),
-        telegram.InlineKeyboardButton('Карусель ЛЭШ', callback_data='school'),
         telegram.InlineKeyboardButton('Назад', callback_data='menu')
     ]
     markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=1))
