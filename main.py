@@ -244,7 +244,7 @@ def query_h(bot, updater,):
                                   text='Задача успешно удалена.',
                                   reply_markup=markup)
         if call.data == 'send_results':
-            btnlist = [telegram.InlineKeyboardButton('JSON', callback_data='send_json'.format(car)),
+            btnlist = [telegram.InlineKeyboardButton('JSON', callback_data='send_json'),
                       telegram.InlineKeyboardButton('XLXS', callback_data='send_xlsx')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2))
             bot.send_message(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Выберите резы:', reply_markup=markup)
