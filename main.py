@@ -243,7 +243,7 @@ def query_h(bot, updater,):
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                   text='Задача успешно удалена.',
                                   reply_markup=markup)
-        if call.data == 'send_resilts':
+        if call.data == 'send_results':
             btnlist = [telegram.InlineKeyboardButton('JSON', callback_data='send_json'.format(car)),
                       telegram.InlineKeyboardButton('XLXS', callback_data='send_xlsx')]
             markup = telegram.InlineKeyboardMarkup(wr.build_menu(btnlist, n_cols=2))
