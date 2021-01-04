@@ -21,7 +21,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 #TOKEN = '707090914:AAFOupGmBjkNIkaZp81IEflkHuDiZgbqOWk'
 TOKEN = '754744500:AAHMdrn9dFwzMkddLOcDTk-3Ertqf7qAZeY'
 REQUEST_KWARGS = {'proxy_url': 'socks5://orbtl.s5.opennetwork.cc:999', 'urllib3_proxy_kwargs': {'username': '298465764', 'password': '56tsGvzP'}}
-updater = Updater(token=TOKEN, request_kwargs=REQUEST_KWARGS, use_context=False)
+updater = Updater(token=TOKEN,  use_context=False)
 #updater = Updater(token=TOKEN)
 updates = updater
 dispatcher = updater.dispatcher
